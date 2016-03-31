@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Nick Shek&#039;s Blog]]></title>
+    <link href="/b/categories/git.xml" rel="self"/>
+    <link href="/"/>
+    <updated>2016-04-01T01:16:19+08:00</updated>
+    <id>/</id>
+        <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[更新git branch所有舊有的電子郵件地址]]></title>
+            <link href="/b/更新git branch所有舊有的電子郵件地址"/>
+            <updated>2015-02-24T00:00:00+08:00</updated>
+            <id>/b/更新git branch所有舊有的電子郵件地址</id>
+            <content type="html"><![CDATA[<p>修改以下的OLD_EMAIL，CORRECT_NAME 及 CORRECT_EMAIL 的值再把以下script移至想更新的git repository 再執行就可以了</p>
+
+<script src="https://gist.github.com/octocat/0831f3fbd83ac4d46451.js"></script>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[把現有的project folder變為git repository]]></title>
+            <link href="/b/把現有的project folder變為git repository"/>
+            <updated>2014-12-15T00:00:00+08:00</updated>
+            <id>/b/把現有的project folder變為git repository</id>
+            <content type="html"><![CDATA[<p>首先，在localhost建立一個假project</p>
+
+<pre><code class="bash">cd ~/
+mkdir project1
+cd project1/
+echo "HelloWorld!" &gt;&gt; test.txt
+</code></pre>
+
+<p>驗證是否確實將Hello World 寫入test.txt</p>
+
+<pre><code class="bash">cat test.txt
+</code></pre>
+
+<p>建立git repository</p>
+
+<pre><code class="bash">git init
+</code></pre>
+
+<p>在remote host 建立bare repository,以下的blog詳細解釋了什麼是bare git repository</p>
+
+<p><a href="http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/">http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/</a></p>
+
+<pre><code class="bash">cd ~/
+mkdir project1.git
+cd project1.git/
+git init --bare
+</code></pre>
+
+<p>在localhost,</p>
+
+<pre><code class="bash">cd ~/project1
+</code></pre>
+
+<p>新增remote origin url</p>
+
+<pre><code class="bash">git remote add origin ssh://&lt;username&gt;@&lt;ip address&gt;/&lt;path to bare repo&gt;/project1.git
+</code></pre>
+
+<p>萬一新增的url 有錯，可以透過下列指令更新remote origin url</p>
+
+<pre><code class="bash">git remote set-url origin &lt;url&gt;
+</code></pre>
+
+<p>最后，輸入我們最熟悉的git指令</p>
+
+<pre><code class="bash">git push origin master
+</code></pre>
+]]></content>
+        </entry>
+    </feed>

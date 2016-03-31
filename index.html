@@ -162,109 +162,100 @@
                 <div class="span8">
                         <article>
         <header>
-            <h2><a href="/b/把現有的project folder變為git repository">把現有的project folder變為git repository</a></h2>
+            <h2><a href="/b/Failed to listen on localhost:8000 (reason: Address already in use)">Failed to listen on localhost:8000 (reason: Address already in use)</a></h2>
         </header>
         <div>
-            <p>首先，在localhost建立一個假project</p>
+            <p>若使用 <code>php -S localhost:8000</code>來進行development時，沒有使用control +C 結束程序，便會發生該問題，因此可以建立以下bashscript結束名為"php"的proceses</p>
 
-<pre><code class="bash">cd ~/
-mkdir project1
-cd project1/
-echo "HelloWorld!" &gt;&gt; test.txt
-</code></pre>
-
-<p>驗證是否確實將Hello World 寫入test.txt</p>
-
-<pre><code class="bash">cat test.txt
-</code></pre>
-
-<p>建立git repository</p>
-
-<pre><code class="bash">git init
-</code></pre>
-
-<p>在remote host 建立bare repository,以下的blog詳細解釋了什麼是bare git repository</p>
-
-<p><a href="http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/">http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/</a></p>
-
-<pre><code class="bash">cd ~/
-mkdir project1.git
-cd project1.git/
-git init --bare
-</code></pre>
-
-<p>在localhost,</p>
-
-<pre><code class="bash">cd ~/project1
-</code></pre>
-
-<p>新增remote origin url</p>
-
-<pre><code class="bash">git remote add origin ssh://&lt;username&gt;@&lt;ip address&gt;/&lt;path to bare repo&gt;/project1.git
-</code></pre>
-
-<p>萬一新增的url 有錯，可以透過下列指令更新remote origin url</p>
-
-<pre><code class="bash">git remote set-url origin &lt;url&gt;
-</code></pre>
-
-<p>最后，輸入我們最熟悉的git指令</p>
-
-<pre><code class="bash">git push origin master
+<pre><code class="bash">#!/bin/bash
+pid=$(ps -fe | grep '[p]hp' | awk '{print $2}')
+if [[ -n $pid ]]; then
+    kill $pid
+else
+    echo "Does not exist"
+fi
 </code></pre>
 
         </div>
             </article>
     <article>
         <header>
-            <h2><a href="/b/令你的youtube embed code變為responsive">令你的youtube embed code變為responsive</a></h2>
+            <h2><a href="/b/Socket.io 1.3">Socket.io 1.3.5 cdn 同源問題</a></h2>
         </header>
         <div>
-            <p>把youtube的Embed HTML由</p>
+            <p>假設己經有一個HTTPS加密網站，為了令網站更快速。因此Socket.io使用了以下的javascript cdn :</p>
 
-<pre><code class="html">&lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
+<pre><code class="html">&lt;script src="https://cdn.socket.io/socket.io-1.3.4.js"&gt;&lt;/script&gt;
 </code></pre>
 
-<p>改成</p>
+<p>但是socket.io server 會在 polling的請求回覆400 Bad request</p>
 
-<pre><code class="html">&lt;div class="video-container"&gt;
-  &lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
-&lt;/div&gt;
+<p>解決方法是從Socket.io依賴的原始碼找出return Access-Control-Allow-Origin Header的地方,根據socket.io v1.3.5 的源始碼,return Access-Control-Allow-Origin Header的地方位於node_modules/socket.io/node_modules/engine.io/lib/transports/polling-xhr.js</p>
+
+<pre><code class="javascript">/**
+ * Returns headers for a response.
+ *
+ * @param {http.ServerRequest} request
+ * @param {Object} extra headers
+ * @api private
+ */
+
+XHR.prototype.headers = function(req, headers){
+  headers = headers || {};
+
+  if (req.headers.origin) {
+    headers['Access-Control-Allow-Credentials'] = 'true';
+    headers['Access-Control-Allow-Origin'] = req.headers.origin;
+  } else {
+    headers['Access-Control-Allow-Origin'] = '*';
+  }
+
+  this.emit('headers', headers);
+  return headers;
+};
 </code></pre>
 
-<p>之後加入以下CSS</p>
+<p>將該function 改成</p>
 
-<pre><code class="css">.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
-}
+<pre><code class="javascript">/**
+ * Returns headers for a response.
+ *
+ * @param {http.ServerRequest} request
+ * @param {Object} extra headers
+ * @api private
+ */
 
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+XHR.prototype.headers = function(req, headers){
+  headers = headers || {};
+
+  if (req.headers.origin) {
+    headers['Access-Control-Allow-Credentials'] = 'true';
+    if(req.headers.origin == "https://www.example-domain.com/"){
+        headers['Access-Control-Allow-Origin'] = "https://cdn.socket.io/";
+    }else{
+        headers['Access-Control-Allow-Origin'] = req.headers.origin;
+    }
+  } else {
+    headers['Access-Control-Allow-Origin'] = '*';
+  }
+
+  this.emit('headers', headers);
+  return headers;
+};
 </code></pre>
+
+<p>或者直接新增　<code>headers['Access-Control-Allow-Origin'] = "https://cdn.socket.io/";</code>　雖然修改方法很醜。但至少可以令網站使用Socket.io CDN</p>
 
         </div>
             </article>
     <article>
         <header>
-            <h2><a href="/b/HKTV 選戰 插曲">HKTV 選戰 插曲</a></h2>
+            <h2><a href="/b/如何令git repo 連接己經存在的heroku app?">如何令git repo 連接己經存在的heroku app?</a></h2>
         </header>
         <div>
-            <p>值得你付出8元去下載這首歌以支持香港音樂</p>
+            <p>假設你己經在<a href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a>下載了heroku 工具程式.若想把原本的應用程式連接至heroku只需要在程式的根目錄輸入<code>heroku create</code>,但是這樣會建立了一個全新的heroku程式。</p>
 
-<p>ITunes下載連結<a href="https://itunes.apple.com/hk/album/ill-be-there-hktv-ju-ji-xuan/id946282372?i=946282373">陳詩慧 Eva Chan - I’ll Be There</a></p>
-
-<div class="video-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/AsHKOH03mxw" frameborder="0" allowfullscreen></iframe>
-</div>
+<p>若我在heroku己經有一個應用程式為 project , 我想將原本的git 連接至 project 而不是重新建立一個新的應用程式,只需要在程式的根目錄輸入 <code>heroku git:remote -a project</code></p>
 
         </div>
             </article>
@@ -275,7 +266,14 @@ git init --bare
                 </div>
                 <div class="span4 sidebar">
                     <div class="well">
-                        <h4>Nick Shek&#039;s Blog</h4>
+                        <h4>天氣</h4>
+                        <div>
+                          <a href="http://www.accuweather.com/en/hk/hong-kong/1123655/weather-forecast/1123655" class="aw-widget-legal">
+<!--
+By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
+-->
+</a><div id="awcc1459444431179" class="aw-widget-current"  data-locationkey="1123655" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1459444431179"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+                        </div>
                     </div>
                     <div class="well sidebar-nav">
                         <h4>有用連結</h4>

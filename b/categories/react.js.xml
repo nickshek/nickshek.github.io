@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Nick Shek&#039;s Blog]]></title>
+    <link href="/b/categories/react.js.xml" rel="self"/>
+    <link href="/"/>
+    <updated>2016-04-01T01:16:19+08:00</updated>
+    <id>/</id>
+        <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[TypeError: deepestAncestor is undefined]]></title>
+            <link href="/b/TypeError: deepestAncestor is undefined"/>
+            <updated>2015-01-18T00:00:00+08:00</updated>
+            <id>/b/TypeError: deepestAncestor is undefined</id>
+            <content type="html"><![CDATA[<p>使用react.js遇到一個奇怪的問題 : TypeError: deepestAncestor is undefined</p>
+
+<p>但是當按F5問題又消失了，去其他頁面有時會有這個問題。</p>
+
+<p>根據 <a href="http://stackoverflow.com/questions/27153166/typeerror-when-using-react-cannot-read-property-firstchild-of-undefined">http://stackoverflow.com/questions/27153166/typeerror-when-using-react-cannot-read-property-firstchild-of-undefined</a></p>
+
+<p>可能係turbolink關係，載入了二個不同版本的react。</p>
+
+<p>我的暫時解決方法是在rails內的application.js暫時不用turbolink。將</p>
+
+<pre><code class="ruby">//= require turbolinks
+//= require react
+//= require react_ujs
+</code></pre>
+
+<p>變為</p>
+
+<pre><code class="ruby">//= require react
+//= require react_ujs
+</code></pre>
+]]></content>
+        </entry>
+    </feed>

@@ -3,272 +3,254 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/atom.xml" rel="self"/>
     <link href="/"/>
-    <updated>2016-04-01T00:23:56+08:00</updated>
+    <updated>2016-04-01T01:16:19+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
-            <title type="html"><![CDATA[把現有的project folder變為git repository]]></title>
-            <link href="/b/把現有的project folder變為git repository"/>
-            <updated>2014-12-15T00:00:00+08:00</updated>
-            <id>/b/把現有的project folder變為git repository</id>
-            <content type="html"><![CDATA[<p>首先，在localhost建立一個假project</p>
+            <title type="html"><![CDATA[Failed to listen on localhost:8000 (reason: Address already in use)]]></title>
+            <link href="/b/Failed to listen on localhost:8000 (reason: Address already in use)"/>
+            <updated>2015-11-15T00:00:00+08:00</updated>
+            <id>/b/Failed to listen on localhost:8000 (reason: Address already in use)</id>
+            <content type="html"><![CDATA[<p>若使用 <code>php -S localhost:8000</code>來進行development時，沒有使用control +C 結束程序，便會發生該問題，因此可以建立以下bashscript結束名為"php"的proceses</p>
 
-<pre><code class="bash">cd ~/
-mkdir project1
-cd project1/
-echo "HelloWorld!" &gt;&gt; test.txt
-</code></pre>
-
-<p>驗證是否確實將Hello World 寫入test.txt</p>
-
-<pre><code class="bash">cat test.txt
-</code></pre>
-
-<p>建立git repository</p>
-
-<pre><code class="bash">git init
-</code></pre>
-
-<p>在remote host 建立bare repository,以下的blog詳細解釋了什麼是bare git repository</p>
-
-<p><a href="http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/">http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/</a></p>
-
-<pre><code class="bash">cd ~/
-mkdir project1.git
-cd project1.git/
-git init --bare
-</code></pre>
-
-<p>在localhost,</p>
-
-<pre><code class="bash">cd ~/project1
-</code></pre>
-
-<p>新增remote origin url</p>
-
-<pre><code class="bash">git remote add origin ssh://&lt;username&gt;@&lt;ip address&gt;/&lt;path to bare repo&gt;/project1.git
-</code></pre>
-
-<p>萬一新增的url 有錯，可以透過下列指令更新remote origin url</p>
-
-<pre><code class="bash">git remote set-url origin &lt;url&gt;
-</code></pre>
-
-<p>最后，輸入我們最熟悉的git指令</p>
-
-<pre><code class="bash">git push origin master
+<pre><code class="bash">#!/bin/bash
+pid=$(ps -fe | grep '[p]hp' | awk '{print $2}')
+if [[ -n $pid ]]; then
+    kill $pid
+else
+    echo "Does not exist"
+fi
 </code></pre>
 ]]></content>
         </entry>
             <entry>
-            <title type="html"><![CDATA[令你的youtube embed code變為responsive]]></title>
-            <link href="/b/令你的youtube embed code變為responsive"/>
-            <updated>2014-12-10T00:00:00+08:00</updated>
-            <id>/b/令你的youtube embed code變為responsive</id>
-            <content type="html"><![CDATA[<p>把youtube的Embed HTML由</p>
+            <title type="html"><![CDATA[Socket.io 1.3.5 cdn 同源問題]]></title>
+            <link href="/b/Socket.io 1.3"/>
+            <updated>2015-04-15T00:00:00+08:00</updated>
+            <id>/b/Socket.io 1.3</id>
+            <content type="html"><![CDATA[<p>假設己經有一個HTTPS加密網站，為了令網站更快速。因此Socket.io使用了以下的javascript cdn :</p>
 
-<pre><code class="html">&lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
+<pre><code class="html">&lt;script src="https://cdn.socket.io/socket.io-1.3.4.js"&gt;&lt;/script&gt;
 </code></pre>
 
-<p>改成</p>
+<p>但是socket.io server 會在 polling的請求回覆400 Bad request</p>
 
-<pre><code class="html">&lt;div class="video-container"&gt;
-  &lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
-&lt;/div&gt;
+<p>解決方法是從Socket.io依賴的原始碼找出return Access-Control-Allow-Origin Header的地方,根據socket.io v1.3.5 的源始碼,return Access-Control-Allow-Origin Header的地方位於node_modules/socket.io/node_modules/engine.io/lib/transports/polling-xhr.js</p>
+
+<pre><code class="javascript">/**
+ * Returns headers for a response.
+ *
+ * @param {http.ServerRequest} request
+ * @param {Object} extra headers
+ * @api private
+ */
+
+XHR.prototype.headers = function(req, headers){
+  headers = headers || {};
+
+  if (req.headers.origin) {
+    headers['Access-Control-Allow-Credentials'] = 'true';
+    headers['Access-Control-Allow-Origin'] = req.headers.origin;
+  } else {
+    headers['Access-Control-Allow-Origin'] = '*';
+  }
+
+  this.emit('headers', headers);
+  return headers;
+};
 </code></pre>
 
-<p>之後加入以下CSS</p>
+<p>將該function 改成</p>
 
-<pre><code class="css">.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
-}
+<pre><code class="javascript">/**
+ * Returns headers for a response.
+ *
+ * @param {http.ServerRequest} request
+ * @param {Object} extra headers
+ * @api private
+ */
 
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+XHR.prototype.headers = function(req, headers){
+  headers = headers || {};
+
+  if (req.headers.origin) {
+    headers['Access-Control-Allow-Credentials'] = 'true';
+    if(req.headers.origin == "https://www.example-domain.com/"){
+        headers['Access-Control-Allow-Origin'] = "https://cdn.socket.io/";
+    }else{
+        headers['Access-Control-Allow-Origin'] = req.headers.origin;
+    }
+  } else {
+    headers['Access-Control-Allow-Origin'] = '*';
+  }
+
+  this.emit('headers', headers);
+  return headers;
+};
+</code></pre>
+
+<p>或者直接新增　<code>headers['Access-Control-Allow-Origin'] = "https://cdn.socket.io/";</code>　雖然修改方法很醜。但至少可以令網站使用Socket.io CDN</p>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[如何令git repo 連接己經存在的heroku app?]]></title>
+            <link href="/b/如何令git repo 連接己經存在的heroku app?"/>
+            <updated>2015-04-05T00:00:00+08:00</updated>
+            <id>/b/如何令git repo 連接己經存在的heroku app?</id>
+            <content type="html"><![CDATA[<p>假設你己經在<a href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a>下載了heroku 工具程式.若想把原本的應用程式連接至heroku只需要在程式的根目錄輸入<code>heroku create</code>,但是這樣會建立了一個全新的heroku程式。</p>
+
+<p>若我在heroku己經有一個應用程式為 project , 我想將原本的git 連接至 project 而不是重新建立一個新的應用程式,只需要在程式的根目錄輸入 <code>heroku git:remote -a project</code></p>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`]]></title>
+            <link href="/b/Missing `secret_key_base` for &#039;production&#039; environment"/>
+            <updated>2015-03-14T00:00:00+08:00</updated>
+            <id>/b/Missing `secret_key_base` for &#039;production&#039; environment</id>
+            <content type="html"><![CDATA[<p>執行<code>rake secret</code> 在.bashrc 或在apache 使用SetEnv指令 設定環境變數 SECRET_KEY_BASE 就完成了。不建議把 secret token 設定在 config/secrets.yml</p>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[如何令你使用SSH時更安全?]]></title>
+            <link href="/b/如何令你使用SSH時更安全?"/>
+            <updated>2015-03-02T00:00:00+08:00</updated>
+            <id>/b/如何令你使用SSH時更安全?</id>
+            <content type="html"><![CDATA[<p>要令SSH登入更安全，最簡單的方法是取消密碼登入。而使用公開金鑰。</p>
+
+<p>在Client輸入</p>
+
+<pre><code class="bash">ssh-keygen -t rsa
+</code></pre>
+
+<p>建議輸入passphrase。之後輸入</p>
+
+<pre><code class="bash">chmod 700 ~/.ssh
+</code></pre>
+
+<p>之後將產生的Public Key (e.g id_rsa.pub) 複製至SSH Server。</p>
+
+<p>登入SSH Server，將Public Key的內容加至 .ssh/authorized_keys:</p>
+
+<pre><code class="bash">cat .ssh/id_rsa.pub &gt;&gt; .ssh/authorized_keys
+</code></pre>
+
+<p>之後開啟另一個Terminal 測試SSH登入是否只需要輸入passphrase來找替原本的使用者密碼</p>
+
+<p>之後輸入<code>sudo vim /etc/ssh/sshd_config</code></p>
+
+<p>將 Port 22 修改為其他Port，使用ssh 時用-p 選項指定PORT Number</p>
+
+<p>將<code>#PasswordAuthentication yes</code> 改為<code>PasswordAuthentication no</code></p>
+
+<p>重啟SSH Service就完成了</p>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[更新git branch所有舊有的電子郵件地址]]></title>
+            <link href="/b/更新git branch所有舊有的電子郵件地址"/>
+            <updated>2015-02-24T00:00:00+08:00</updated>
+            <id>/b/更新git branch所有舊有的電子郵件地址</id>
+            <content type="html"><![CDATA[<p>修改以下的OLD_EMAIL，CORRECT_NAME 及 CORRECT_EMAIL 的值再把以下script移至想更新的git repository 再執行就可以了</p>
+
+<script src="https://gist.github.com/octocat/0831f3fbd83ac4d46451.js"></script>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[git://github.com/reactjs/react-rails.git (at master) is not yet checked out. Run `bundle install` first.]]></title>
+            <link href="/b/react-rails.git (at master) is not yet checked out"/>
+            <updated>2015-01-26T00:00:00+08:00</updated>
+            <id>/b/react-rails.git (at master) is not yet checked out</id>
+            <content type="html"><![CDATA[<p>根據<a href="https://github.com/bundler/bundler/blob/master/ISSUES.md">https://github.com/bundler/bundler/blob/master/ISSUES.md</a>，解決方是執行以下程式碼，重新安裝 dependencies :</p>
+
+<pre><code class="bash"># remove user-specific gems and git repos
+rm -rf ~/.bundle/ ~/.gem/bundler/ ~/.gems/cache/bundler/
+
+# remove system-wide git repos and git checkouts
+rm -rf $GEM_HOME/bundler/ $GEM_HOME/cache/bundler/
+
+# remove project-specific settings
+rm -rf .bundle/
+
+# remove project-specific cached gems and repos
+rm -rf vendor/cache/
+
+# remove the saved resolve of the Gemfile
+rm -rf Gemfile.lock
+
+# uninstall the rubygems-bundler and open_gem gems
+rvm gemset use global # if using rvm
+gem uninstall rubygems-bundler open_gem
+
+# try to install one more time
+bundle install
 </code></pre>
 ]]></content>
         </entry>
             <entry>
-            <title type="html"><![CDATA[HKTV 選戰 插曲]]></title>
-            <link href="/b/HKTV 選戰 插曲"/>
-            <updated>2014-12-10T00:00:00+08:00</updated>
-            <id>/b/HKTV 選戰 插曲</id>
-            <content type="html"><![CDATA[<p>值得你付出8元去下載這首歌以支持香港音樂</p>
+            <title type="html"><![CDATA[debug.py =&gt; IndexError: list index out of range]]></title>
+            <link href="/b/debug"/>
+            <updated>2015-01-22T00:00:00+08:00</updated>
+            <id>/b/debug</id>
+            <content type="html"><![CDATA[<p>若該錯誤來自Django項目的debug.py，解決方法是修改_get_lines_from_file方法，把以下這一行:</p>
 
-<p>ITunes下載連結<a href="https://itunes.apple.com/hk/album/ill-be-there-hktv-ju-ji-xuan/id946282372?i=946282373">陳詩慧 Eva Chan - I’ll Be There</a></p>
+<pre><code class="python">source = f.readlines()
+</code></pre>
 
-<div class="video-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/AsHKOH03mxw" frameborder="0" allowfullscreen></iframe>
-</div>
+<p>改為</p>
+
+<pre><code class="python">source = f.read().splitlines()
+</code></pre>
 ]]></content>
         </entry>
             <entry>
-            <title type="html"><![CDATA[在ubuntu移除圖片的metadata]]></title>
-            <link href="/b/在ubuntu移除圖片的metadata"/>
-            <updated>2014-12-07T00:00:00+08:00</updated>
-            <id>/b/在ubuntu移除圖片的metadata</id>
-            <content type="html"><![CDATA[<p>1.安裝exiftool:</p>
+            <title type="html"><![CDATA[從http://fontello.com/下載font icon,及使用Nokogiri製作一張font icon class 的名單]]></title>
+            <link href="/b/從fontello下載font icon,及使用Nokogiri製作一張font icon class 的名單"/>
+            <updated>2015-01-20T00:00:00+08:00</updated>
+            <id>/b/從fontello下載font icon,及使用Nokogiri製作一張font icon class 的名單</id>
+            <content type="html"><![CDATA[<p>從<a href="http://fontello.com/">http://fontello.com/</a>下載font icon，zip檔入面有demo.html，列出如何使用fontello icon ，我的目的是利Nokogiri在rake task以ruby list 形式列印出所有class name，以下是該rake task的程式碼 :</p>
 
-<pre><code class="bash">sudo apt-get install libimage-exiftool-perl
-</code></pre>
-
-<p>2.讀取圖片資訊</p>
-
-<pre><code class="bash">exiftool example.jpg
-</code></pre>
-
-<p>3.移除圖片資訊</p>
-
-<pre><code class="bash">exiftool -all= example.jpg
-</code></pre>
-
-<p>4.原本的圖片會保留成example.jpg_original</p>
-]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[在rails migration改變column type]]></title>
-            <link href="/b/在rails migration改變column type"/>
-            <updated>2014-11-26T00:00:00+08:00</updated>
-            <id>/b/在rails migration改變column type</id>
-            <content type="html"><![CDATA[<p>假設我們要改變sub_anonrums table的title,將其欄位種類由:text改為:string方法如下:</p>
-
-<p>1.在project下新增一個migration file</p>
-
-<pre><code class="bash">rails g migration change_sub_anonrums_title_format
-</code></pre>
-
-<p>2.移除migration 下的change 方法,改為使用up 和down方法,migration file 的source code 如下所示: \</p>
-
-<pre><code class="ruby">class ChangeSubAnonrumsTitleFormat &lt; ActiveRecord::Migration
-  def up
-    change_column :sub_anonrums, :title, :string
-  end
-
-  def down
-    change_column :sub_anonrums, :title, :text
+<pre><code class="ruby">namespace :dev do
+  task :font_icon_list do
+    text = open(Rails.root.join('doc', 'fontello-c340d124','demo.html')).read
+    html_doc = Nokogiri::HTML(text)
+    font_icon_list = html_doc.xpath(%{//div[@class="row"]//div//span[@class="i-name"]//text()})
+    font_icon_list_code = %{["#{font_icon_list.to_a.join(%{","})}"]}
+    puts font_icon_list_code
   end
 end
 </code></pre>
 
-<p>3.執行 rake db:migrate</p>
+<p>最後執行rake task輸出結果</p>
+
+<pre><code class="bash">rake dev:font_icon_list &gt; result.txt
+</code></pre>
 ]]></content>
         </entry>
             <entry>
-            <title type="html"><![CDATA[使用ubuntu在localhost建立subdomain]]></title>
-            <link href="/b/使用ubuntu在localhost建立subdomain"/>
-            <updated>2014-11-13T00:00:00+08:00</updated>
-            <id>/b/使用ubuntu在localhost建立subdomain</id>
-            <content type="html"><![CDATA[<p>有好多時候，我們需要在localhost測試多個project無論是(php,Ruby,Python的項目)。在localhost建立subdomain可以讓我們在同一主機測試不同項目:</p>
+            <title type="html"><![CDATA[TypeError: deepestAncestor is undefined]]></title>
+            <link href="/b/TypeError: deepestAncestor is undefined"/>
+            <updated>2015-01-18T00:00:00+08:00</updated>
+            <id>/b/TypeError: deepestAncestor is undefined</id>
+            <content type="html"><![CDATA[<p>使用react.js遇到一個奇怪的問題 : TypeError: deepestAncestor is undefined</p>
 
-<p>php項目1的URL : http://localhost/project1/</p>
+<p>但是當按F5問題又消失了，去其他頁面有時會有這個問題。</p>
 
-<p>php項目2的URL : http://localhost/project2/</p>
+<p>根據 <a href="http://stackoverflow.com/questions/27153166/typeerror-when-using-react-cannot-read-property-firstchild-of-undefined">http://stackoverflow.com/questions/27153166/typeerror-when-using-react-cannot-read-property-firstchild-of-undefined</a></p>
 
-<p>我們的最終目的是改變以上的項目的URL為:</p>
+<p>可能係turbolink關係，載入了二個不同版本的react。</p>
 
-<p>php項目1的URL : http://project1.localhost/</p>
+<p>我的暫時解決方法是在rails內的application.js暫時不用turbolink。將</p>
 
-<p>php項目2的URL : http://project2.localhost/</p>
-
-<p>1.首先修改/etc/hosts:</p>
-
-<pre><code class="bash">sudo nano /etc/hosts
+<pre><code class="ruby">//= require turbolinks
+//= require react
+//= require react_ujs
 </code></pre>
 
-<p>在/etc/hosts加入以下原始碼:</p>
+<p>變為</p>
 
-<pre><code>127.0.0.1       project1.localhost
-127.0.0.1       project2.localhost
+<pre><code class="ruby">//= require react
+//= require react_ujs
 </code></pre>
-
-<p>2.在/etc/apache2/sites-available/新增project1和project2的configure file:</p>
-
-<p>project1.conf</p>
-
-<pre><code class="apache">&lt;VirtualHost *:80&gt;
-  # The ServerName directive sets the request scheme, hostname and port that
-  # the server uses to identify itself. This is used when creating
-  # redirection URLs. In the context of virtual hosts, the ServerName
-  # specifies what hostname must appear in the request's Host: header to
-  # match this virtual host. For the default virtual host (this file) this
-  # value is not decisive as it is used as a last resort host regardless.
-  # However, you must set it for any further virtual host explicitly.
-  ServerName project1.localhost
-
-  ServerAdmin webmaster@localhost
-  DocumentRoot /var/www/html/project1
-
-  # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
-  # error, crit, alert, emerg.
-  # It is also possible to configure the loglevel for particular
-  # modules, e.g.
-  #LogLevel info ssl:warn
-
-  ErrorLog ${APACHE_LOG_DIR}/error.log
-  CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-  # For most configuration files from conf-available/, which are
-  # enabled or disabled at a global level, it is possible to
-  # include a line for only one particular virtual host. For example the
-  # following line enables the CGI configuration for this host only
-  # after it has been globally disabled with "a2disconf".
-  #Include conf-available/serve-cgi-bin.conf
-&lt;/VirtualHost&gt;
-
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-</code></pre>
-
-<p>project2.conf</p>
-
-<pre><code class="apache">&lt;VirtualHost *:80&gt;
-    # The ServerName directive sets the request scheme, hostname and port that
-    # the server uses to identify itself. This is used when creating
-    # redirection URLs. In the context of virtual hosts, the ServerName
-    # specifies what hostname must appear in the request's Host: header to
-    # match this virtual host. For the default virtual host (this file) this
-    # value is not decisive as it is used as a last resort host regardless.
-    # However, you must set it for any further virtual host explicitly.
-    ServerName project2.localhost
-
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/html/project2
-
-    # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
-    # error, crit, alert, emerg.
-    # It is also possible to configure the loglevel for particular
-    # modules, e.g.
-    #LogLevel info ssl:warn
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-    # For most configuration files from conf-available/, which are
-    # enabled or disabled at a global level, it is possible to
-    # include a line for only one particular virtual host. For example the
-    # following line enables the CGI configuration for this host only
-    # after it has been globally disabled with "a2disconf".
-    #Include conf-available/serve-cgi-bin.conf
-&lt;/VirtualHost&gt;
-
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-</code></pre>
-
-<p>3.用a2ensite令該二個virtual hosts的設定生效:</p>
-
-<pre><code class="bash">sudo a2ensite /etc/apache2/sites-available/project1.conf
-sudo a2ensite /etc/apache2/sites-available/project2.conf
-</code></pre>
-
-<p>4.輸入sudo service apache2 restart重新啟動apache2</p>
 ]]></content>
         </entry>
     </feed>
