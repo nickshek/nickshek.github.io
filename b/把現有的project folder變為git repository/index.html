@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Categories &mdash; Nick Shek&#039;s Blog</title>
+        <title>把現有的project folder變為git repository &mdash; Nick Shek&#039;s Blog</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <meta name="robots" content="noindex, follow">
-                <link href="/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <meta name="robots" content="index, follow">
+        <link href="/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/components/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
         <link href="/css/style.css" rel="stylesheet" type="text/css" />
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -160,16 +160,70 @@
         <div class="mainContent container">
             <div class="row-fluid">
                 <div class="span8">
-                    <h2>Categories</h2>
+                        <article>
+        <header>
+            <h2>把現有的project folder變為git repository</h2>
+        </header>
+        <div>
+            <p>首先，在localhost建立一個假project</p>
 
-<div>
-<a href="/blog/categories/git">git</a>
-<a href="/blog/categories/css">css</a>
-<a href="/blog/categories/HKTV">HKTV</a>
-<a href="/blog/categories/ubuntu">ubuntu</a>
-<a href="/blog/categories/rails">rails</a>
-<a href="/blog/categories/apache">apache</a>
-</div>                </div>
+<pre><code class="bash">cd ~/
+mkdir project1
+cd project1/
+echo "HelloWorld!" &gt;&gt; test.txt
+</code></pre>
+
+<p>驗證是否確實將Hello World 寫入test.txt</p>
+
+<pre><code class="bash">cat test.txt
+</code></pre>
+
+<p>建立git repository</p>
+
+<pre><code class="bash">git init
+</code></pre>
+
+<p>在remote host 建立bare repository,以下的blog詳細解釋了什麼是bare git repository</p>
+
+<p><a href="http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/">http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/</a></p>
+
+<pre><code class="bash">cd ~/
+mkdir project1.git
+cd project1.git/
+git init --bare
+</code></pre>
+
+<p>在localhost,</p>
+
+<pre><code class="bash">cd ~/project1
+</code></pre>
+
+<p>新增remote origin url</p>
+
+<pre><code class="bash">git remote add origin ssh://&lt;username&gt;@&lt;ip address&gt;/&lt;path to bare repo&gt;/project1.git
+</code></pre>
+
+<p>萬一新增的url 有錯，可以透過下列指令更新remote origin url</p>
+
+<pre><code class="bash">git remote set-url origin &lt;url&gt;
+</code></pre>
+
+<p>最后，輸入我們最熟悉的git指令</p>
+
+<pre><code class="bash">git push origin master
+</code></pre>
+
+        </div>
+                            <nav class="article">
+                <ul>
+                                                                <li>Previous: <a class="previous" href="/b/令你的youtube embed code變為responsive" title="令你的youtube embed code變為responsive"><span class="title">令你的youtube embed code變為responsive</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+
+
+
+                </div>
                 <div class="span4 sidebar">
                     <div class="well">
                         <h4>Nick Shek&#039;s Blog</h4>

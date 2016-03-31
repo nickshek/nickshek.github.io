@@ -2,9 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc></loc>
-    <lastmod>2016-03-31</lastmod>
+    <lastmod>2016-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>/b/把現有的project folder變為git repository</loc>
+    <lastmod>2014-12-15T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+    <url>
+    <loc>/b/令你的youtube embed code變為responsive</loc>
+    <lastmod>2014-12-10T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+    <url>
+    <loc>/b/HKTV 選戰 插曲</loc>
+    <lastmod>2014-12-10T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+    <url>
+    <loc>/b/在ubuntu移除圖片的metadata</loc>
+    <lastmod>2014-12-07T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
     <url>
     <loc>/b/在rails migration改變column type</loc>

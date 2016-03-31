@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Nick Shek&#039;s Blog]]></title>
+    <link href="/blog/categories/HKTV.xml" rel="self"/>
+    <link href="/"/>
+    <updated>2016-04-01T00:23:56+08:00</updated>
+    <id>/</id>
+        <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[HKTV 選戰 插曲]]></title>
+            <link href="/b/HKTV 選戰 插曲"/>
+            <updated>2014-12-10T00:00:00+08:00</updated>
+            <id>/b/HKTV 選戰 插曲</id>
+            <content type="html"><![CDATA[<p>值得你付出8元去下載這首歌以支持香港音樂</p>
+
+<p>ITunes下載連結<a href="https://itunes.apple.com/hk/album/ill-be-there-hktv-ju-ji-xuan/id946282372?i=946282373">陳詩慧 Eva Chan - I’ll Be There</a></p>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/AsHKOH03mxw" frameborder="0" allowfullscreen></iframe>
+</div>
+]]></content>
+        </entry>
+    </feed>

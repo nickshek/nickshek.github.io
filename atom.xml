@@ -3,9 +3,137 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/atom.xml" rel="self"/>
     <link href="/"/>
-    <updated>2016-03-31T01:57:57+08:00</updated>
+    <updated>2016-04-01T00:23:56+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[把現有的project folder變為git repository]]></title>
+            <link href="/b/把現有的project folder變為git repository"/>
+            <updated>2014-12-15T00:00:00+08:00</updated>
+            <id>/b/把現有的project folder變為git repository</id>
+            <content type="html"><![CDATA[<p>首先，在localhost建立一個假project</p>
+
+<pre><code class="bash">cd ~/
+mkdir project1
+cd project1/
+echo "HelloWorld!" &gt;&gt; test.txt
+</code></pre>
+
+<p>驗證是否確實將Hello World 寫入test.txt</p>
+
+<pre><code class="bash">cat test.txt
+</code></pre>
+
+<p>建立git repository</p>
+
+<pre><code class="bash">git init
+</code></pre>
+
+<p>在remote host 建立bare repository,以下的blog詳細解釋了什麼是bare git repository</p>
+
+<p><a href="http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/">http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/</a></p>
+
+<pre><code class="bash">cd ~/
+mkdir project1.git
+cd project1.git/
+git init --bare
+</code></pre>
+
+<p>在localhost,</p>
+
+<pre><code class="bash">cd ~/project1
+</code></pre>
+
+<p>新增remote origin url</p>
+
+<pre><code class="bash">git remote add origin ssh://&lt;username&gt;@&lt;ip address&gt;/&lt;path to bare repo&gt;/project1.git
+</code></pre>
+
+<p>萬一新增的url 有錯，可以透過下列指令更新remote origin url</p>
+
+<pre><code class="bash">git remote set-url origin &lt;url&gt;
+</code></pre>
+
+<p>最后，輸入我們最熟悉的git指令</p>
+
+<pre><code class="bash">git push origin master
+</code></pre>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[令你的youtube embed code變為responsive]]></title>
+            <link href="/b/令你的youtube embed code變為responsive"/>
+            <updated>2014-12-10T00:00:00+08:00</updated>
+            <id>/b/令你的youtube embed code變為responsive</id>
+            <content type="html"><![CDATA[<p>把youtube的Embed HTML由</p>
+
+<pre><code class="html">&lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
+</code></pre>
+
+<p>改成</p>
+
+<pre><code class="html">&lt;div class="video-container"&gt;
+  &lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>之後加入以下CSS</p>
+
+<pre><code class="css">.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</code></pre>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[HKTV 選戰 插曲]]></title>
+            <link href="/b/HKTV 選戰 插曲"/>
+            <updated>2014-12-10T00:00:00+08:00</updated>
+            <id>/b/HKTV 選戰 插曲</id>
+            <content type="html"><![CDATA[<p>值得你付出8元去下載這首歌以支持香港音樂</p>
+
+<p>ITunes下載連結<a href="https://itunes.apple.com/hk/album/ill-be-there-hktv-ju-ji-xuan/id946282372?i=946282373">陳詩慧 Eva Chan - I’ll Be There</a></p>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/AsHKOH03mxw" frameborder="0" allowfullscreen></iframe>
+</div>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[在ubuntu移除圖片的metadata]]></title>
+            <link href="/b/在ubuntu移除圖片的metadata"/>
+            <updated>2014-12-07T00:00:00+08:00</updated>
+            <id>/b/在ubuntu移除圖片的metadata</id>
+            <content type="html"><![CDATA[<p>1.安裝exiftool:</p>
+
+<pre><code class="bash">sudo apt-get install libimage-exiftool-perl
+</code></pre>
+
+<p>2.讀取圖片資訊</p>
+
+<pre><code class="bash">exiftool example.jpg
+</code></pre>
+
+<p>3.移除圖片資訊</p>
+
+<pre><code class="bash">exiftool -all= example.jpg
+</code></pre>
+
+<p>4.原本的圖片會保留成example.jpg_original</p>
+]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[在rails migration改變column type]]></title>
             <link href="/b/在rails migration改變column type"/>
