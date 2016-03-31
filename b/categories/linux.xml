@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/linux.xml" rel="self"/>
     <link href="/"/>
-    <updated>2016-04-01T01:16:19+08:00</updated>
+    <updated>2016-04-01T01:32:54+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[如何令你使用SSH時更安全?]]></title>
-            <link href="/b/如何令你使用SSH時更安全?"/>
+            <link href="/b/如何令你使用SSH時更安全"/>
             <updated>2015-03-02T00:00:00+08:00</updated>
-            <id>/b/如何令你使用SSH時更安全?</id>
+            <id>/b/如何令你使用SSH時更安全</id>
             <content type="html"><![CDATA[<p>要令SSH登入更安全，最簡單的方法是取消密碼登入。而使用公開金鑰。</p>
 
 <p>在Client輸入</p>

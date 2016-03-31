@@ -193,6 +193,32 @@ end
             </article>
 
 
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+
+    var hashCode = function(s){
+      return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+    };
+
+    var disqus_config = function () {
+        this.page.url = "nickshek.github.io";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = hashCode("從http://fontello.com/下載font icon,及使用Nokogiri製作一張font icon class 的名單"); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//nicksheksblog.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
                 </div>
                 <div class="span4 sidebar">
@@ -227,5 +253,6 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                 <script src="/components/highlightjs/highlight.pack.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
 
-                    </body>
+        <script id="dsq-count-scr" src="//nicksheksblog.disqus.com/count.js" async></script>
+    </body>
 </html>

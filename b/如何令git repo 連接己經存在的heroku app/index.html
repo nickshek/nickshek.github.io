@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml` &mdash; Nick Shek&#039;s Blog</title>
+        <title>如何令git repo 連接己經存在的heroku app? &mdash; Nick Shek&#039;s Blog</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -162,16 +162,18 @@
                 <div class="span8">
                         <article>
         <header>
-            <h2>Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</h2>
+            <h2>如何令git repo 連接己經存在的heroku app?</h2>
         </header>
         <div>
-            <p>執行<code>rake secret</code> 在.bashrc 或在apache 使用SetEnv指令 設定環境變數 SECRET_KEY_BASE 就完成了。不建議把 secret token 設定在 config/secrets.yml</p>
+            <p>假設你己經在<a href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a>下載了heroku 工具程式.若想把原本的應用程式連接至heroku只需要在程式的根目錄輸入<code>heroku create</code>,但是這樣會建立了一個全新的heroku程式。</p>
+
+<p>若我在heroku己經有一個應用程式為 project , 我想將原本的git 連接至 project 而不是重新建立一個新的應用程式,只需要在程式的根目錄輸入 <code>heroku git:remote -a project</code></p>
 
         </div>
                             <nav class="article">
                 <ul>
-                                            <li>Next: <a class="next" href="/b/如何令git repo 連接己經存在的heroku app" title="如何令git repo 連接己經存在的heroku app?"><span class="title">如何令git repo 連接己經存在的heroku app?</span></a></li>
-                                                                <li>Previous: <a class="previous" href="/b/如何令你使用SSH時更安全" title="如何令你使用SSH時更安全?"><span class="title">如何令你使用SSH時更安全?</span></a></li>
+                                            <li>Next: <a class="next" href="/b/Socket.io 1.3" title="Socket.io 1.3.5 cdn 同源問題"><span class="title">Socket.io 1.3.5 cdn 同源問題</span></a></li>
+                                                                <li>Previous: <a class="previous" href="/b/Missing `secret_key_base` for &#039;production&#039; environment" title="Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`"><span class="title">Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</span></a></li>
                                     </ul>
             </nav>
             </article>
@@ -190,7 +192,7 @@
 
     var disqus_config = function () {
         this.page.url = "nickshek.github.io";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = hashCode("Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`"); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = hashCode("如何令git repo 連接己經存在的heroku app?"); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 
     (function() {  // DON'T EDIT BELOW THIS LINE

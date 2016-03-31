@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml` &mdash; Nick Shek&#039;s Blog</title>
+        <title>如何令你使用SSH時更安全? &mdash; Nick Shek&#039;s Blog</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -162,16 +162,43 @@
                 <div class="span8">
                         <article>
         <header>
-            <h2>Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</h2>
+            <h2>如何令你使用SSH時更安全?</h2>
         </header>
         <div>
-            <p>執行<code>rake secret</code> 在.bashrc 或在apache 使用SetEnv指令 設定環境變數 SECRET_KEY_BASE 就完成了。不建議把 secret token 設定在 config/secrets.yml</p>
+            <p>要令SSH登入更安全，最簡單的方法是取消密碼登入。而使用公開金鑰。</p>
+
+<p>在Client輸入</p>
+
+<pre><code class="bash">ssh-keygen -t rsa
+</code></pre>
+
+<p>建議輸入passphrase。之後輸入</p>
+
+<pre><code class="bash">chmod 700 ~/.ssh
+</code></pre>
+
+<p>之後將產生的Public Key (e.g id_rsa.pub) 複製至SSH Server。</p>
+
+<p>登入SSH Server，將Public Key的內容加至 .ssh/authorized_keys:</p>
+
+<pre><code class="bash">cat .ssh/id_rsa.pub &gt;&gt; .ssh/authorized_keys
+</code></pre>
+
+<p>之後開啟另一個Terminal 測試SSH登入是否只需要輸入passphrase來找替原本的使用者密碼</p>
+
+<p>之後輸入<code>sudo vim /etc/ssh/sshd_config</code></p>
+
+<p>將 Port 22 修改為其他Port，使用ssh 時用-p 選項指定PORT Number</p>
+
+<p>將<code>#PasswordAuthentication yes</code> 改為<code>PasswordAuthentication no</code></p>
+
+<p>重啟SSH Service就完成了</p>
 
         </div>
                             <nav class="article">
                 <ul>
-                                            <li>Next: <a class="next" href="/b/如何令git repo 連接己經存在的heroku app" title="如何令git repo 連接己經存在的heroku app?"><span class="title">如何令git repo 連接己經存在的heroku app?</span></a></li>
-                                                                <li>Previous: <a class="previous" href="/b/如何令你使用SSH時更安全" title="如何令你使用SSH時更安全?"><span class="title">如何令你使用SSH時更安全?</span></a></li>
+                                            <li>Next: <a class="next" href="/b/Missing `secret_key_base` for &#039;production&#039; environment" title="Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`"><span class="title">Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</span></a></li>
+                                                                <li>Previous: <a class="previous" href="/b/更新git branch所有舊有的電子郵件地址" title="更新git branch所有舊有的電子郵件地址"><span class="title">更新git branch所有舊有的電子郵件地址</span></a></li>
                                     </ul>
             </nav>
             </article>
@@ -190,7 +217,7 @@
 
     var disqus_config = function () {
         this.page.url = "nickshek.github.io";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = hashCode("Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`"); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = hashCode("如何令你使用SSH時更安全?"); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 
     (function() {  // DON'T EDIT BELOW THIS LINE
