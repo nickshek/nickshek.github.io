@@ -6,9 +6,30 @@
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <meta name="robots" content="noindex, follow">
-                <link href="/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/components/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+                        <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+      	<!----webfonts---->
+    		<link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+    		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet' type='text/css'>
+    		<!----//webfonts---->
+    		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    		<!--end slider -->
+    		<!--script-->
+        <script type="text/javascript" src="/js/move-top.js"></script>
+        <script type="text/javascript" src="/js/easing.js"></script>
+        <!--/script-->
+        <script type="text/javascript">
+        			jQuery(document).ready(function($) {
+        				$(".scroll").click(function(event){
+        					event.preventDefault();
+        					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+        				});
+        			});
+        </script>
+
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -43,78 +64,6 @@
 
         </style>
                                         <style>
-        .navbar-default {
-          background-color: #779ae8;
-          border-color: #334161;
-          text-shadow: none !important;
-        }
-        .navbar-default .brand {
-          color: #ecf0f1;
-          text-shadow: none;
-        }
-        .navbar-default .brand:hover,
-        .navbar-default .brand:focus {
-          color: #fefefe;
-        }
-        .navbar-default .text {
-          color: #ecf0f1;
-        }
-        .navbar-default .nav > li > a {
-          color: #ecf0f1;
-          text-shadow: none;
-        }
-        .navbar-default .nav > li > a:hover,
-        .navbar-default .nav > li > a:focus {
-          color: #fefefe;
-        }
-        .navbar-default .nav > .active > a,
-        .navbar-default .nav > .active > a:hover,
-        .navbar-default .nav > .active > a:focus {
-          color: #fefefe;
-          background-color: #334161;
-        }
-        .navbar-default .nav > .open > a,
-        .navbar-default .nav > .open > a:hover,
-        .navbar-default .nav > .open > a:focus {
-          color: #fefefe;
-          background-color: #334161;
-        }
-        .navbar-default .toggle {
-          border-color: #334161;
-        }
-        .navbar-default .toggle:hover,
-        .navbar-default .toggle:focus {
-          background-color: #334161;
-        }
-        .navbar-default .toggle .icon-bar {
-          background-color: #ecf0f1;
-        }
-        .navbar-default .navbar-collapse,
-        .navbar-default .navbar-form {
-          border-color: #ecf0f1;
-        }
-        .navbar-default .navbar-link {
-          color: #ecf0f1;
-        }
-        .navbar-default .navbar-link:hover {
-          color: #fefefe;
-        }
-
-        @media (max-width: 767px) {
-          .navbar-default .nav .open .dropdown-menu > li > a {
-            color: #ecf0f1;
-          }
-          .navbar-default .nav .open .dropdown-menu > li > a:hover,
-          .navbar-default .nav .open .dropdown-menu > li > a:focus {
-            color: #fefefe;
-          }
-          .navbar-default .nav .open .dropdown-menu > .active > a,
-          .navbar-default .nav .open .dropdown-menu > .active > a:hover,
-          .navbar-default .nav .open .dropdown-menu > .active > a:focus {
-            color: #fefefe;
-            background-color: #334161;
-          }
-        }
 
         .video-container {
             position: relative;
@@ -134,36 +83,42 @@
         </style>
     </head>
     <body>
-        <header>
-            <div class="navbar navbar-default navbar-fixed-top">
-                <!--
-                <div class="navbar-inner">
-                -->
-                    <div class="container-fluid">
-                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        <a class="brand" href="/">Nick Shek&#039;s Blog</a>
-                        <div class="nav-collapse collapse">
-                            <ul class="nav">
-                                <li><a href="/b">所有文章</a></li>
-                                                            </ul>
-                        </div><!--/.nav-collapse -->
-                    </div>
-                    <!--
-                </div>
-              -->
-            </div>
-        </header>
-        <div class="mainContent container">
-            <div class="row-fluid">
-                <div class="span8">
-                        <article>
-        <header>
-            <h2><a href="/b/react-rails.git (at master) is not yet checked out">git://github.com/reactjs/react-rails.git (at master) is not yet checked out. Run `bundle install` first.</a></h2>
-        </header>
+      <!---header---->
+<div class="header">
+	 <div class="container">
+       <div class="logo">
+         
+       </div>
+			 <!---start-top-nav---->
+			 <div class="top-menu">
+				  <span class="menu"> </span>
+				   <ul>
+						<li class="active"><a href="/">首頁</a></li>
+						<li ><a href="/b">所有文章</a></li>
+						<div class="clearfix"> </div>
+				 </ul>
+			 </div>
+			 <div class="clearfix"></div>
+					<script>
+					$("span.menu").click(function(){
+					$(".top-menu ul").slideToggle("slow" , function(){
+					});
+					});
+					</script>
+				<!---//End-top-nav---->
+	 </div>
+</div>
+<!--/header-->
+
+<div class="content">
+	 <div class="container">
+		 <div class="content-grids">
+       <div class="row">
+			 <div class="col-md-8 content-main">
+         <div class="content-grid">
+             <div class="content-grid-info">
+      <div class="post-info">
+      <h4><a href="/b/react-rails.git (at master) is not yet checked out">git://github.com/reactjs/react-rails.git (at master) is not yet checked out. Run `bundle install` first.</a>  2015-01-26</h4>
         <div>
             <p>根據<a href="https://github.com/bundler/bundler/blob/master/ISSUES.md">https://github.com/bundler/bundler/blob/master/ISSUES.md</a>，解決方是執行以下程式碼，重新安裝 dependencies :</p>
 
@@ -191,11 +146,11 @@ bundle install
 </code></pre>
 
         </div>
-            </article>
-    <article>
-        <header>
-            <h2><a href="/b/debug">debug.py =&gt; IndexError: list index out of range</a></h2>
-        </header>
+                </div>
+    </div>
+    <div class="content-grid-info">
+      <div class="post-info">
+      <h4><a href="/b/debug">debug.py =&gt; IndexError: list index out of range</a>  2015-01-22</h4>
         <div>
             <p>若該錯誤來自Django項目的debug.py，解決方法是修改_get_lines_from_file方法，把以下這一行:</p>
 
@@ -208,11 +163,11 @@ bundle install
 </code></pre>
 
         </div>
-            </article>
-    <article>
-        <header>
-            <h2><a href="/b/從fontello下載font icon,及使用Nokogiri製作一張font icon class 的名單">從http://fontello.com/下載font icon,及使用Nokogiri製作一張font icon class 的名單</a></h2>
-        </header>
+                </div>
+    </div>
+    <div class="content-grid-info">
+      <div class="post-info">
+      <h4><a href="/b/從fontello下載font icon,及使用Nokogiri製作一張font icon class 的名單">從http://fontello.com/下載font icon,及使用Nokogiri製作一張font icon class 的名單</a>  2015-01-20</h4>
         <div>
             <p>從<a href="http://fontello.com/">http://fontello.com/</a>下載font icon，zip檔入面有demo.html，列出如何使用fontello icon ，我的目的是利Nokogiri在rake task以ruby list 形式列印出所有class name，以下是該rake task的程式碼 :</p>
 
@@ -233,36 +188,45 @@ end
 </code></pre>
 
         </div>
-            </article>
-    <nav>
-        <a href="/page/2">Newer Posts</a><br />
-        <a href="/page/4">Older Posts</a><br />
-    </nav>
                 </div>
-                <div class="span4 sidebar">
-                    <div class="well">
-                        <h4>天氣</h4>
-                        <div>
-                          <a href="http://www.accuweather.com/en/hk/hong-kong/1123655/weather-forecast/1123655" class="aw-widget-legal">
+    </div>
+    <nav class="page">
+        <a href="/page/2">更新的文章</a><br />
+        <a href="/page/4">更舊的文章</a><br />
+    </nav>
+       </div>
+			  </div>
+			  <div class="col-md-4 content-right">
+				 <div class="recent">
+					 <h3>天氣</h3>
+
+           <div>
+             <a href="http://www.accuweather.com/en/hk/hong-kong/1123655/weather-forecast/1123655" class="aw-widget-legal">
 <!--
 By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
 -->
 </a><div id="awcc1459444431179" class="aw-widget-current"  data-locationkey="1123655" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1459444431179"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
-                        </div>
-                    </div>
-                    <div class="well sidebar-nav">
-                        <h4>有用連結</h4>
-                        <ul class="nav">
-                            <li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a></li>
-                            <li><a href="http://sculpin.io">sculpin.io</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="container">
-            &copy; 2016 Nick Shek&#039;s Blog
-        </footer>
+           </div>
+
+				 </div>
+				 <div class="comments">
+					 <h3>有用連結</h3>
+					 <ul>
+             <li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a></li>
+             <li><a href="http://sculpin.io">sculpin.io</a></li>
+					 </ul>
+				 </div>
+			  </div>
+      </div>
+		  </div>
+	  </div>
+</div>
+
+<div class="footer">
+	 <div class="container">
+	 <p>&copy; 2016 Nick Shek&#039;s Blog</p>
+	 </div>
+</div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/components/jquery/jquery.min.js"><\/script>')</script>
