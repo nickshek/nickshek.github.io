@@ -3,9 +3,38 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/apache.xml" rel="self"/>
     <link href="/"/>
-    <updated>2016-04-02T05:05:00+08:00</updated>
+    <updated>2016-04-14T20:29:17+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[使用Apache設定Alias時出現403 Foridden]]></title>
+            <link href="/b/使用Apache設定Alias時出現403 Foridden"/>
+            <updated>2016-04-16T00:00:00+08:00</updated>
+            <id>/b/使用Apache設定Alias時出現403 Foridden</id>
+            <content type="html"><![CDATA[<p>這個錯誤其實是好常見的 ，如果在apache 看見 access denied because search permissions are missing on a component of the path ，
+即表示<strong>根目錄至Alias 的目標資料夾</strong>中任意一個資料夾沒有execute permission!例如:</p>
+
+<p>如果你alias的目標資夾是 <code>/usr/local/apache2/htdocs/foo</code> ，請確保以下資料夾有execute permission</p>
+
+<p>/
+/usr/
+/usr/local/
+/usr/local/apache2/
+/usr/local/apache2/htdocs/
+/usr/local/apache2/htdocs/foo/</p>
+
+<p>owner 無須設定是apache user
+因此，解決方法如下</p>
+
+<pre><code>cd /usr/local/apache2/htdocs/foo
+
+ls -la
+chmod +x .
+cd ..
+# 重覆直至去到 /
+</code></pre>
+]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[使用ubuntu在localhost建立subdomain]]></title>
             <link href="/b/使用ubuntu在localhost建立subdomain"/>
