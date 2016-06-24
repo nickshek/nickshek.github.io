@@ -130,6 +130,44 @@
             <div class="content-grid">
                   <div class="content-grid-info">
       <div class="post-info">
+      <h4><a href="/b/令你的youtube embed code變為responsive">令你的youtube embed code變為responsive</a>  2014-12-10</h4>
+        <div>
+            <p>把youtube的Embed HTML由</p>
+
+<pre><code class="html">&lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
+</code></pre>
+
+<p>改成</p>
+
+<pre><code class="html">&lt;div class="video-container"&gt;
+  &lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>之後加入以下CSS</p>
+
+<pre><code class="css">.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</code></pre>
+
+        </div>
+                </div>
+    </div>
+    <div class="content-grid-info">
+      <div class="post-info">
       <h4><a href="/b/HKTV 選戰 插曲">HKTV 選戰 插曲</a>  2014-12-10</h4>
         <div>
             <p>值得你付出8元去下載這首歌以支持香港音樂</p>
@@ -163,35 +201,6 @@
 </code></pre>
 
 <p>4.原本的圖片會保留成example.jpg_original</p>
-
-        </div>
-                </div>
-    </div>
-    <div class="content-grid-info">
-      <div class="post-info">
-      <h4><a href="/b/在rails migration改變column type">在rails migration改變column type</a>  2014-11-26</h4>
-        <div>
-            <p>假設我們要改變sub_anonrums table的title,將其欄位種類由:text改為:string方法如下:</p>
-
-<p>1.在project下新增一個migration file</p>
-
-<pre><code class="bash">rails g migration change_sub_anonrums_title_format
-</code></pre>
-
-<p>2.移除migration 下的change 方法,改為使用up 和down方法,migration file 的source code 如下所示: \</p>
-
-<pre><code class="ruby">class ChangeSubAnonrumsTitleFormat &lt; ActiveRecord::Migration
-  def up
-    change_column :sub_anonrums, :title, :string
-  end
-
-  def down
-    change_column :sub_anonrums, :title, :text
-  end
-end
-</code></pre>
-
-<p>3.執行 rake db:migrate</p>
 
         </div>
                 </div>
