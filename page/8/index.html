@@ -130,6 +130,30 @@
             <div class="content-grid">
                   <div class="content-grid-info">
       <div class="post-info">
+      <h4><a href="/b/在ubuntu移除圖片的metadata">在ubuntu移除圖片的metadata</a>  2014-12-07</h4>
+        <div>
+            <p>1.安裝exiftool:</p>
+
+<pre><code class="bash">sudo apt-get install libimage-exiftool-perl
+</code></pre>
+
+<p>2.讀取圖片資訊</p>
+
+<pre><code class="bash">exiftool example.jpg
+</code></pre>
+
+<p>3.移除圖片資訊</p>
+
+<pre><code class="bash">exiftool -all= example.jpg
+</code></pre>
+
+<p>4.原本的圖片會保留成example.jpg_original</p>
+
+        </div>
+                </div>
+    </div>
+    <div class="content-grid-info">
+      <div class="post-info">
       <h4><a href="/b/在rails migration改變column type">在rails migration改變column type</a>  2014-11-26</h4>
         <div>
             <p>假設我們要改變sub_anonrums table的title,將其欄位種類由:text改為:string方法如下:</p>

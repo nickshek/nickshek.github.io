@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc></loc>
-    <lastmod>2016-06-24</lastmod>
+    <lastmod>2016-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>/b/安裝Ubuntu Server至舊Notebook注意事項</loc>
+    <lastmod>2016-06-28T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
     <url>
     <loc>/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;</loc>

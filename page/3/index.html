@@ -130,6 +130,15 @@
             <div class="content-grid">
                   <div class="content-grid-info">
       <div class="post-info">
+      <h4><a href="/b/Missing `secret_key_base` for &#039;production&#039; environment">Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</a>  2015-03-14</h4>
+        <div>
+            <p>執行<code>rake secret</code> 在.bashrc 或在apache 使用SetEnv指令 設定環境變數 SECRET_KEY_BASE 就完成了。不建議把 secret token 設定在 config/secrets.yml</p>
+
+        </div>
+                </div>
+    </div>
+    <div class="content-grid-info">
+      <div class="post-info">
       <h4><a href="/b/如何令你使用SSH時更安全">如何令你使用SSH時更安全?</a>  2015-03-02</h4>
         <div>
             <p>要令SSH登入更安全，最簡單的方法是取消密碼登入。而使用公開金鑰。</p>
@@ -171,38 +180,6 @@
             <p>修改以下的OLD_EMAIL，CORRECT_NAME 及 CORRECT_EMAIL 的值再把以下script移至想更新的git repository 再執行就可以了</p>
 
 <script src="https://gist.github.com/octocat/0831f3fbd83ac4d46451.js"></script>
-
-        </div>
-                </div>
-    </div>
-    <div class="content-grid-info">
-      <div class="post-info">
-      <h4><a href="/b/react-rails.git (at master) is not yet checked out">git://github.com/reactjs/react-rails.git (at master) is not yet checked out. Run `bundle install` first.</a>  2015-01-26</h4>
-        <div>
-            <p>根據<a href="https://github.com/bundler/bundler/blob/master/ISSUES.md">https://github.com/bundler/bundler/blob/master/ISSUES.md</a>，解決方是執行以下程式碼，重新安裝 dependencies :</p>
-
-<pre><code class="bash"># remove user-specific gems and git repos
-rm -rf ~/.bundle/ ~/.gem/bundler/ ~/.gems/cache/bundler/
-
-# remove system-wide git repos and git checkouts
-rm -rf $GEM_HOME/bundler/ $GEM_HOME/cache/bundler/
-
-# remove project-specific settings
-rm -rf .bundle/
-
-# remove project-specific cached gems and repos
-rm -rf vendor/cache/
-
-# remove the saved resolve of the Gemfile
-rm -rf Gemfile.lock
-
-# uninstall the rubygems-bundler and open_gem gems
-rvm gemset use global # if using rvm
-gem uninstall rubygems-bundler open_gem
-
-# try to install one more time
-bundle install
-</code></pre>
 
         </div>
                 </div>

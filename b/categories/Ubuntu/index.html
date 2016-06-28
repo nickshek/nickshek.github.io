@@ -2,10 +2,12 @@
 <html>
 
 <head>
-  <title>Home &mdash; Nick Shek&#039;s Blog</title>
+  <title>Category Archive "Ubuntu" &mdash; Nick Shek&#039;s Blog</title>
   <meta charset="utf-8">
   <meta name="theme-color" content="#ffffff">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">   <meta name="robots" content="noindex, follow">    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">     <link rel="alternate" type="application/atom+xml" href="/blog/categories/Ubuntu.xml" title="Nick Shek&#039;s Blog 'Ubuntu' category feed" />
+    <meta name="robots" content="noindex, follow">
+   <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <link href="/css/style.css" rel="stylesheet" type="text/css" />
 
 
@@ -106,7 +108,7 @@
       <div class="top-menu">
         <span class="menu"> </span>
         <ul>
-          <li class="active" ><a href="/">首頁</a></li>
+          <li ><a href="/">首頁</a></li>
           <li ><a href="/b">所有文章</a></li>
           <div class="clearfix"> </div>
         </ul>
@@ -128,106 +130,14 @@
         <div class="row">
           <div class="col-md-8 content-main">
             <div class="content-grid">
-                  <div class="content-grid-info">
-      <div class="post-info">
-      <h4><a href="/b/在Linux terminal列輸出己整理的JSON">在Linux terminal列輸出己整理的JSON</a>  2015-01-11</h4>
-        <div>
-            <p>在terminal 輸入 <code>curl http://it-ebooks-api.info/v1/search/python</code> ，輸出是一堆壓縮了的JSON。</p>
+              <h2>"Ubuntu"</h2>
+        <h3>June 2016</h3>
+<article>
+  <div><a href="/b/安裝Ubuntu Server至舊Notebook注意事項">安裝Ubuntu Server至舊Notebook注意事項</a></div>
+</article>
 
-<p>只要輸入 <code>curl http://it-ebooks-api.info/v1/search/python | python -mjson.tool</code> ，便能輸出整理好的JSON了。</p>
-
-        </div>
-                </div>
-    </div>
-    <div class="content-grid-info">
-      <div class="post-info">
-      <h4><a href="/b/利用regular expression判斷URL是否為YouTube URL，且return youtube video ID">利用regular expression判斷URL是否為YouTube URL，且return youtube video ID</a>  2014-12-30</h4>
-        <div>
-            <p>在以下的Stack Overflow網址，有人寫了一句相當強大的regular expression來完成該使命</p>
-
-<p>stackoverflow : <a href="http://stackoverflow.com/questions/2964678/jquery-youtube-url-validation-with-regex/10315969#10315969">jQuery Youtube URL Validation with regex</a></p>
-
-<pre><code class="javascript">/**
- * JavaScript function to match (and return) the video Id
- * of any valid Youtube Url, given as input string.
- * @author: Stephan Schmitz eyecatchup@gmail.com
- * @url: http://stackoverflow.com/a/10315969/624466
- */
-function ytVidId(url) {
-  var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&amp;v=))((\w|-){11})(?:\S+)?$/;
-  return (url.match(p)) ? RegExp.$1 : false;
-}
-</code></pre>
-
-<p>以下的程式碼用Python完成同樣功能 ，再抽一些較有代表性例子用作doctest :</p>
-
-<pre><code class="python">import re
-
-def isYouTubeURL(youtube_url):
-    """return the video Id of any valid Youtube Url as string
-
-    &gt;&gt;&gt; isYouTubeURL("https://www.youtube.com/watch?v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("https://www.youtube.com/watch?feature=youtu.be&amp;v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("http://www.youtube.com/watch?v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("www.youtube.com/watch?v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("youtube.com/watch?v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("https://youtu.be/T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("http://youtu.be/T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("youtu.be/T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("www.youtube.com/embed/T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("")
-    &gt;&gt;&gt; isYouTubeURL("http://www.geekblog.tk/?v=T2UW7VawmGI")
-    """
-    youtube_regex = r"^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&amp;v=))(?P&lt;YouTubeID&gt;(\w|-){11})(?:\S+)?$"
-    sreMatch = re.match(youtube_regex, youtube_url)
-    return sreMatch.group("YouTubeID") if sreMatch else None
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-</code></pre>
-
-<p>假設將以下的Python程式碼儲存成youtube.py，執行 <code>python youtube.py -v</code> 便可以執行doctest了。</p>
-
-        </div>
-                </div>
-    </div>
-    <div class="content-grid-info">
-      <div class="post-info">
-      <h4><a href="/b/Friendly ID中文問題">Friendly ID中文問題</a>  2014-12-20</h4>
-        <div>
-            <p>主要在Gemfile加下以下指令以安裝 babosa</p>
-
-<pre><code class="ruby">gem "babosa"
-</code></pre>
-
-<p>再在需要中文URL的Model下override normalize_friendly_id方法:</p>
-
-<pre><code class="ruby">def normalize_friendly_id(input)
-  input.to_s.to_slug.normalize.to_s
-end
-</code></pre>
-
-<p>以下網誌有詳細解釋:</p>
-
-<p>使用 Babosa 配合 Friendly_id 解決中文網址問題 : <a href="http://blog.roachking.net/blog/2014/01/17/babosa-friendly-id-solve-chinese-problems/">http://blog.roachking.net/blog/2014/01/17/babosa-friendly-id-solve-chinese-problems/</a></p>
-
-        </div>
-                </div>
-    </div>
-    <nav class="page">
-        <a href="/page/5">更新的文章</a><br />
-        <a href="/page/7">更舊的文章</a><br />
-    </nav>
+<div>
+</div>
             </div>
           </div>
           <div class="col-md-4 content-right">
