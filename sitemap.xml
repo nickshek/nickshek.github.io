@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc></loc>
-    <lastmod>2016-06-28</lastmod>
+    <lastmod>2016-07-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -147,6 +147,12 @@
     <url>
     <loc>/b/使用ubuntu在localhost建立subdomain</loc>
     <lastmod>2014-11-13T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+    <url>
+    <loc>/_posts/2016-07-09-docker build image 時出現 no space left on device</loc>
+    <lastmod>2016-07-09T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
