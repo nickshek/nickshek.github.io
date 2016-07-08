@@ -130,6 +130,17 @@
             <div class="content-grid">
                   <div class="content-grid-info">
       <div class="post-info">
+      <h4><a href="/b/更新git branch所有舊有的電子郵件地址">更新git branch所有舊有的電子郵件地址</a>  2015-02-24</h4>
+        <div>
+            <p>修改以下的OLD_EMAIL，CORRECT_NAME 及 CORRECT_EMAIL 的值再把以下script移至想更新的git repository 再執行就可以了</p>
+
+<script src="https://gist.github.com/octocat/0831f3fbd83ac4d46451.js"></script>
+
+        </div>
+                </div>
+    </div>
+    <div class="content-grid-info">
+      <div class="post-info">
       <h4><a href="/b/react-rails.git (at master) is not yet checked out">git://github.com/reactjs/react-rails.git (at master) is not yet checked out. Run `bundle install` first.</a>  2015-01-26</h4>
         <div>
             <p>根據<a href="https://github.com/bundler/bundler/blob/master/ISSUES.md">https://github.com/bundler/bundler/blob/master/ISSUES.md</a>，解決方是執行以下程式碼，重新安裝 dependencies :</p>
@@ -172,31 +183,6 @@ bundle install
 <p>改為</p>
 
 <pre><code class="python">source = f.read().splitlines()
-</code></pre>
-
-        </div>
-                </div>
-    </div>
-    <div class="content-grid-info">
-      <div class="post-info">
-      <h4><a href="/b/從fontello下載font icon,及使用Nokogiri製作一張font icon class 的名單">從http://fontello.com/下載font icon,及使用Nokogiri製作一張font icon class 的名單</a>  2015-01-20</h4>
-        <div>
-            <p>從<a href="http://fontello.com/">http://fontello.com/</a>下載font icon，zip檔入面有demo.html，列出如何使用fontello icon ，我的目的是利Nokogiri在rake task以ruby list 形式列印出所有class name，以下是該rake task的程式碼 :</p>
-
-<pre><code class="ruby">namespace :dev do
-  task :font_icon_list do
-    text = open(Rails.root.join('doc', 'fontello-c340d124','demo.html')).read
-    html_doc = Nokogiri::HTML(text)
-    font_icon_list = html_doc.xpath(%{//div[@class="row"]//div//span[@class="i-name"]//text()})
-    font_icon_list_code = %{["#{font_icon_list.to_a.join(%{","})}"]}
-    puts font_icon_list_code
-  end
-end
-</code></pre>
-
-<p>最後執行rake task輸出結果</p>
-
-<pre><code class="bash">rake dev:font_icon_list &gt; result.txt
 </code></pre>
 
         </div>
