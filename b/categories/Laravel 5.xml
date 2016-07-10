@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Nick Shek&#039;s Blog]]></title>
+    <link href="/b/categories/Laravel 5.xml" rel="self"/>
+    <link href="/"/>
+    <updated>2016-07-10T20:34:54+08:00</updated>
+    <id>/</id>
+        <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;]]></title>
+            <link href="/b/執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;"/>
+            <updated>2016-07-10T00:00:00+08:00</updated>
+            <id>/b/執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;</id>
+            <content type="html"><![CDATA[<p>執行Laravel Project的PHPUnit 若出現</p>
+
+<pre><code>Maximum function nesting level of '100' reached, aborting!
+</code></pre>
+
+<p>而在其他電腦運行時又沒有問題，解決方法是相當容易。先在terminal執行</p>
+
+<pre><code class="bash">php --ini
+</code></pre>
+
+<p>確認php.ini 路徑，之後在php.ini加入</p>
+
+<pre><code>xdebug.max_nesting_level=300
+</code></pre>
+
+<p>即可。</p>
+]]></content>
+        </entry>
+    </feed>

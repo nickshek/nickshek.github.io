@@ -2,10 +2,11 @@
 <html>
 
 <head>
-  <title>Home &mdash; Nick Shek&#039;s Blog</title>
+  <title>執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot; &mdash; Nick Shek&#039;s Blog</title>
   <meta charset="utf-8">
   <meta name="theme-color" content="#ffffff">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">   <meta name="robots" content="noindex, follow">    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">     <meta name="robots" content="index, follow">
+   <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <link href="/css/style.css" rel="stylesheet" type="text/css" />
 
 
@@ -106,7 +107,7 @@
       <div class="top-menu">
         <span class="menu"> </span>
         <ul>
-          <li class="active" ><a href="/">首頁</a></li>
+          <li ><a href="/">首頁</a></li>
           <li ><a href="/b">所有文章</a></li>
           <div class="clearfix"> </div>
         </ul>
@@ -129,77 +130,58 @@
           <div class="col-md-8 content-main">
             <div class="content-grid">
                   <div class="content-grid-info">
-      <div class="post-info">
-      <h4><a href="/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;">使用sftp時出現&quot;connection reset by peer connection closed&quot;</a>  2016-06-24</h4>
-        <div>
-            <p>若新加的sftp帳戶發現，出現connection reset by peer connection closed的錯誤訊息，應該先用cat 查看/etc/rsyslog.conf了解找出出現
-auth,authpriv.*　的行數，便清楚需要查看那個log file以獲取進一步的資訊。若系統是Centos，多數是查看/var/log/secure，ubuntu 則查看
-/var/log/auth.log。</p>
+            <div class="post-info">
+      <h4><a href="#">執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;</a>  2016-07-10</h4>
+      <div>
+          <p>執行Laravel Project的PHPUnit 若出現</p>
 
-<p>以下頁面清楚說明如何fix SFTP的問題，我遇到的情況是</p>
-
-<pre><code>sshd[12399]: fatal: bad ownership or modes for chroot directory component "/path/of/chroot/directory/"
+<pre><code>Maximum function nesting level of '100' reached, aborting!
 </code></pre>
 
-<p>解決方法是確保chroot的路徑的所有資料夾都是由root 擁有及所有path都是安全的。若有任何一個資料夾的權限是777，應該把資料夾改為775或755。</p>
+<p>而在其他電腦運行時又沒有問題，解決方法是相當容易。先在terminal執行</p>
 
-<p>參考 : <a href="https://wiki.archlinux.org/index.php/SFTP_chroot">https://wiki.archlinux.org/index.php/SFTP_chroot</a></p>
-
-        </div>
-                </div>
-    </div>
-    <div class="content-grid-info">
-      <div class="post-info">
-      <h4><a href="/b/使用Apache設定Alias時出現403 Foridden">使用Apache設定Alias時出現403 Foridden</a>  2016-04-16</h4>
-        <div>
-            <p>這個錯誤其實是好常見的 ，如果在apache 看見 access denied because search permissions are missing on a component of the path ，
-即表示<strong>根目錄至Alias 的目標資料夾</strong>中任意一個資料夾沒有execute permission!例如:</p>
-
-<p>如果你alias的目標資夾是 <code>/usr/local/apache2/htdocs/foo</code> ，請確保以下資料夾有execute permission</p>
-
-<p>/
-/usr/
-/usr/local/
-/usr/local/apache2/
-/usr/local/apache2/htdocs/
-/usr/local/apache2/htdocs/foo/</p>
-
-<p>owner 無須設定是apache user
-因此，解決方法如下</p>
-
-<pre><code>cd /usr/local/apache2/htdocs/foo
-
-ls -la
-chmod +x .
-cd ..
-# 重覆直至去到 /
+<pre><code class="bash">php --ini
 </code></pre>
 
-        </div>
-                </div>
-    </div>
-    <div class="content-grid-info">
-      <div class="post-info">
-      <h4><a href="/b/Failed to listen on localhost:8000 (reason: Address already in use)">Failed to listen on localhost:8000 (reason: Address already in use)</a>  2015-11-15</h4>
-        <div>
-            <p>若使用 <code>php -S localhost:8000</code>來進行development時，沒有使用control +C 結束程序，便會發生該問題，因此可以建立以下bashscript結束名為"php"的proceses</p>
+<p>確認php.ini 路徑，之後在php.ini加入</p>
 
-<pre><code class="bash">#!/bin/bash
-pid=$(ps -fe | grep '[p]hp' | awk '{print $2}')
-if [[ -n $pid ]]; then
-    kill $pid
-else
-    echo "Does not exist"
-fi
+<pre><code>xdebug.max_nesting_level=300
 </code></pre>
 
-        </div>
-                </div>
+<p>即可。</p>
+
+      </div>
+      </div>
     </div>
-    <nav class="page">
-        <a href="/">更新的文章</a><br />
-        <a href="/page/3">更舊的文章</a><br />
-    </nav>
+            <nav class="article">
+            <ul>
+                                                    <li>上一篇: <a class="previous" href="/b/docker build image 時出現 no space left on device" title="docker build image 時出現 no space left on device"><span class="title">docker build image 時出現 no space left on device</span></a></li>
+                            </ul>
+        </nav>
+    
+        
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+         */
+        /*
+        var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() {  // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//nicksheksblog.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
             </div>
           </div>
           <div class="col-md-4 content-right">
@@ -269,6 +251,7 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
     hljs.initHighlightingOnLoad();
   </script>
 
-   </body>
+  <script id="dsq-count-scr" src="//nicksheksblog.disqus.com/count.js" async></script>
+</body>
 
 </html>
