@@ -187,6 +187,7 @@ drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
 </article>
             <nav class="article">
             <ul>
+                                    <li>下一篇: <a class="next" href="/b/移除及暫停所有Docker container 指令" title="移除及暫停所有Docker container 指令"><span class="title">移除及暫停所有Docker container 指令</span></a></li>
                                                     <li>上一篇: <a class="previous" href="/b/執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;" title="執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;"><span class="title">執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;</span></a></li>
                             </ul>
         </nav>
@@ -253,8 +254,29 @@ drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
                 <h3 class="sidebar-title">好聽音樂</h3>
                 <div class="widget-container">
                   <div class="video-container">
-                   <iframe width="560" height="315" src="https://www.youtube.com/embed/2i2khp_npdE" frameborder="0" allowfullscreen></iframe>
-                   </div>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLIqPX-LFZSzdxlmyK2cHkv3HPRwmzgkRL" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+
+              <!-- sidebar-widget -->
+              <div class="sidebar-widget">
+                <h3 class="sidebar-title">實用指令</h3>
+                <div class="widget-container">
+                  <ul>
+                    <li>
+                      暫停所有Docker Container
+<pre>
+docker stop $(docker ps -a -q)
+</pre>
+                    </li>
+                    <li>
+                      移除所有Docker Container
+<pre>
+docker rm $(docker ps -a -q)
+</pre>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
@@ -270,7 +292,7 @@ drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
     </div>
 
     <div class="footer-bottom">
-      <i class="fa fa-copyright"></i> &copy; 2016 Nick Shek&#039;s Blog
+      <i class="fa fa-copyright"></i> &copy; 2017 Nick Shek&#039;s Blog
           </div>
   </footer>
   <!-- Bootstrap core JavaScript

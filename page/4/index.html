@@ -124,6 +124,18 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/如何令git repo 連接己經存在的heroku app">如何令git repo 連接己經存在的heroku app?</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-04-05</span></div>
+		<div class="blog-post-text">
+        <p>假設你己經在<a href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a>下載了heroku 工具程式.若想把原本的應用程式連接至heroku只需要在程式的根目錄輸入<code>heroku create</code>,但是這樣會建立了一個全新的heroku程式。</p>
+
+<p>若我在heroku己經有一個應用程式為 project , 我想將原本的git 連接至 project 而不是重新建立一個新的應用程式,只需要在程式的根目錄輸入 <code>heroku git:remote -a project</code></p>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/Missing `secret_key_base` for &#039;production&#039; environment">Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-03-14</span></div>
 		<div class="blog-post-text">
@@ -165,18 +177,6 @@
 <p>將<code>#PasswordAuthentication yes</code> 改為<code>PasswordAuthentication no</code></p>
 
 <p>重啟SSH Service就完成了</p>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/更新git branch所有舊有的電子郵件地址">更新git branch所有舊有的電子郵件地址</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-02-24</span></div>
-		<div class="blog-post-text">
-        <p>修改以下的OLD_EMAIL，CORRECT_NAME 及 CORRECT_EMAIL 的值再把以下script移至想更新的git repository 再執行就可以了</p>
-
-<script src="https://gist.github.com/octocat/0831f3fbd83ac4d46451.js"></script>
 
 		</div>
     	</div>
@@ -224,8 +224,29 @@
                 <h3 class="sidebar-title">好聽音樂</h3>
                 <div class="widget-container">
                   <div class="video-container">
-                   <iframe width="560" height="315" src="https://www.youtube.com/embed/2i2khp_npdE" frameborder="0" allowfullscreen></iframe>
-                   </div>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLIqPX-LFZSzdxlmyK2cHkv3HPRwmzgkRL" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+
+              <!-- sidebar-widget -->
+              <div class="sidebar-widget">
+                <h3 class="sidebar-title">實用指令</h3>
+                <div class="widget-container">
+                  <ul>
+                    <li>
+                      暫停所有Docker Container
+<pre>
+docker stop $(docker ps -a -q)
+</pre>
+                    </li>
+                    <li>
+                      移除所有Docker Container
+<pre>
+docker rm $(docker ps -a -q)
+</pre>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
@@ -241,7 +262,7 @@
     </div>
 
     <div class="footer-bottom">
-      <i class="fa fa-copyright"></i> &copy; 2016 Nick Shek&#039;s Blog
+      <i class="fa fa-copyright"></i> &copy; 2017 Nick Shek&#039;s Blog
           </div>
   </footer>
   <!-- Bootstrap core JavaScript

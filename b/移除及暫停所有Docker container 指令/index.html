@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>如何令你使用SSH時更安全? &mdash; Nick Shek&#039;s Blog</title>
+  <title>移除及暫停所有Docker container 指令 &mdash; Nick Shek&#039;s Blog</title>
   <meta charset="utf-8">
   <meta name="theme-color" content="#ffffff">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">     <meta name="robots" content="index, follow">
@@ -125,45 +125,21 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
-		<h2><a href="#">如何令你使用SSH時更安全?</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-03-02</span></div>
+		<h2><a href="#">移除及暫停所有Docker container 指令</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2017-01-12</span></div>
 		<div class="blog-post-text">
-        <p>要令SSH登入更安全，最簡單的方法是取消密碼登入。而使用公開金鑰。</p>
+        <p>怕自己忘記了，放上這個blog。這個指令在開發Docker Image 時還是經常使用的。</p>
 
-<p>在Client輸入</p>
-
-<pre><code class="bash">ssh-keygen -t rsa
+<pre><code class="bash">docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
 </code></pre>
-
-<p>建議輸入passphrase。之後輸入</p>
-
-<pre><code class="bash">chmod 700 ~/.ssh
-</code></pre>
-
-<p>之後將產生的Public Key (e.g id_rsa.pub) 複製至SSH Server。</p>
-
-<p>登入SSH Server，將Public Key的內容加至 .ssh/authorized_keys:</p>
-
-<pre><code class="bash">cat .ssh/id_rsa.pub &gt;&gt; .ssh/authorized_keys
-</code></pre>
-
-<p>之後開啟另一個Terminal 測試SSH登入是否只需要輸入passphrase來找替原本的使用者密碼</p>
-
-<p>之後輸入<code>sudo vim /etc/ssh/sshd_config</code></p>
-
-<p>將 Port 22 修改為其他Port，使用ssh 時用-p 選項指定PORT Number</p>
-
-<p>將<code>#PasswordAuthentication yes</code> 改為<code>PasswordAuthentication no</code></p>
-
-<p>重啟SSH Service就完成了</p>
 
 		</div>
 	</div>
 </article>
             <nav class="article">
             <ul>
-                                    <li>下一篇: <a class="next" href="/b/Missing `secret_key_base` for &#039;production&#039; environment" title="Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`"><span class="title">Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</span></a></li>
-                                                    <li>上一篇: <a class="previous" href="/b/更新git branch所有舊有的電子郵件地址" title="更新git branch所有舊有的電子郵件地址"><span class="title">更新git branch所有舊有的電子郵件地址</span></a></li>
+                                                    <li>上一篇: <a class="previous" href="/b/ 思考在linux一次性重新命名多個file的問題" title="思考在linux一次性重新命名多個file的問題"><span class="title">思考在linux一次性重新命名多個file的問題</span></a></li>
                             </ul>
         </nav>
     

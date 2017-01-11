@@ -125,6 +125,12 @@
   					<div class="info-block">
   <h2>所有文章</h2>
     <div class="post_block">
+                                            <h3 class="year_and_month">January 2017</h3>
+          <div class="post_link">
+        <a href="/b/移除及暫停所有Docker container 指令">移除及暫停所有Docker container 指令</a>
+      </div>
+    </div>
+      <div class="post_block">
                                             <h3 class="year_and_month">October 2016</h3>
           <div class="post_link">
         <a href="/b/ 思考在linux一次性重新命名多個file的問題">思考在linux一次性重新命名多個file的問題</a>
@@ -175,12 +181,6 @@
         <a href="/b/如何令git repo 連接己經存在的heroku app">如何令git repo 連接己經存在的heroku app?</a>
       </div>
     </div>
-      <div class="post_block">
-                            <h3 class="year_and_month">March 2015</h3>
-          <div class="post_link">
-        <a href="/b/Missing `secret_key_base` for &#039;production&#039; environment">Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</a>
-      </div>
-    </div>
     
         <nav class="article clearfix">
                   <a class="next" href="/b/page/2.html" title="Next Page"><span class="title">下一頁</span></a>
@@ -224,8 +224,29 @@
                 <h3 class="sidebar-title">好聽音樂</h3>
                 <div class="widget-container">
                   <div class="video-container">
-                   <iframe width="560" height="315" src="https://www.youtube.com/embed/2i2khp_npdE" frameborder="0" allowfullscreen></iframe>
-                   </div>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLIqPX-LFZSzdxlmyK2cHkv3HPRwmzgkRL" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+
+              <!-- sidebar-widget -->
+              <div class="sidebar-widget">
+                <h3 class="sidebar-title">實用指令</h3>
+                <div class="widget-container">
+                  <ul>
+                    <li>
+                      暫停所有Docker Container
+<pre>
+docker stop $(docker ps -a -q)
+</pre>
+                    </li>
+                    <li>
+                      移除所有Docker Container
+<pre>
+docker rm $(docker ps -a -q)
+</pre>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
@@ -241,7 +262,7 @@
     </div>
 
     <div class="footer-bottom">
-      <i class="fa fa-copyright"></i> &copy; 2016 Nick Shek&#039;s Blog
+      <i class="fa fa-copyright"></i> &copy; 2017 Nick Shek&#039;s Blog
           </div>
   </footer>
   <!-- Bootstrap core JavaScript

@@ -2,11 +2,10 @@
 <html>
 
 <head>
-  <title>如何令你使用SSH時更安全? &mdash; Nick Shek&#039;s Blog</title>
+  <title>Home &mdash; Nick Shek&#039;s Blog</title>
   <meta charset="utf-8">
   <meta name="theme-color" content="#ffffff">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">     <meta name="robots" content="index, follow">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">   <meta name="robots" content="noindex, follow"> 
   <!-- Bootstrap core CSS -->
   <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -105,7 +104,7 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="/">首頁</a></li>
+					<li class="active"><a href="/">首頁</a></li>
           <li><a href="/b">所有文章</a></li>
 				</ul>
 
@@ -125,71 +124,119 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
-		<h2><a href="#">如何令你使用SSH時更安全?</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-03-02</span></div>
+		<h2><a href="/b/使用ubuntu在localhost建立subdomain">使用ubuntu在localhost建立subdomain</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-11-13</span></div>
 		<div class="blog-post-text">
-        <p>要令SSH登入更安全，最簡單的方法是取消密碼登入。而使用公開金鑰。</p>
+        <p>有好多時候，我們需要在localhost測試多個project無論是(php,Ruby,Python的項目)。在localhost建立subdomain可以讓我們在同一主機測試不同項目:</p>
 
-<p>在Client輸入</p>
+<p>php項目1的URL : http://localhost/project1/</p>
 
-<pre><code class="bash">ssh-keygen -t rsa
+<p>php項目2的URL : http://localhost/project2/</p>
+
+<p>我們的最終目的是改變以上的項目的URL為:</p>
+
+<p>php項目1的URL : http://project1.localhost/</p>
+
+<p>php項目2的URL : http://project2.localhost/</p>
+
+<p>1.首先修改/etc/hosts:</p>
+
+<pre><code class="bash">sudo nano /etc/hosts
 </code></pre>
 
-<p>建議輸入passphrase。之後輸入</p>
+<p>在/etc/hosts加入以下原始碼:</p>
 
-<pre><code class="bash">chmod 700 ~/.ssh
+<pre><code>127.0.0.1       project1.localhost
+127.0.0.1       project2.localhost
 </code></pre>
 
-<p>之後將產生的Public Key (e.g id_rsa.pub) 複製至SSH Server。</p>
+<p>2.在/etc/apache2/sites-available/新增project1和project2的configure file:</p>
 
-<p>登入SSH Server，將Public Key的內容加至 .ssh/authorized_keys:</p>
+<p>project1.conf</p>
 
-<pre><code class="bash">cat .ssh/id_rsa.pub &gt;&gt; .ssh/authorized_keys
+<pre><code class="apache">&lt;VirtualHost *:80&gt;
+  # The ServerName directive sets the request scheme, hostname and port that
+  # the server uses to identify itself. This is used when creating
+  # redirection URLs. In the context of virtual hosts, the ServerName
+  # specifies what hostname must appear in the request's Host: header to
+  # match this virtual host. For the default virtual host (this file) this
+  # value is not decisive as it is used as a last resort host regardless.
+  # However, you must set it for any further virtual host explicitly.
+  ServerName project1.localhost
+
+  ServerAdmin webmaster@localhost
+  DocumentRoot /var/www/html/project1
+
+  # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+  # error, crit, alert, emerg.
+  # It is also possible to configure the loglevel for particular
+  # modules, e.g.
+  #LogLevel info ssl:warn
+
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  # For most configuration files from conf-available/, which are
+  # enabled or disabled at a global level, it is possible to
+  # include a line for only one particular virtual host. For example the
+  # following line enables the CGI configuration for this host only
+  # after it has been globally disabled with "a2disconf".
+  #Include conf-available/serve-cgi-bin.conf
+&lt;/VirtualHost&gt;
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 </code></pre>
 
-<p>之後開啟另一個Terminal 測試SSH登入是否只需要輸入passphrase來找替原本的使用者密碼</p>
+<p>project2.conf</p>
 
-<p>之後輸入<code>sudo vim /etc/ssh/sshd_config</code></p>
+<pre><code class="apache">&lt;VirtualHost *:80&gt;
+    # The ServerName directive sets the request scheme, hostname and port that
+    # the server uses to identify itself. This is used when creating
+    # redirection URLs. In the context of virtual hosts, the ServerName
+    # specifies what hostname must appear in the request's Host: header to
+    # match this virtual host. For the default virtual host (this file) this
+    # value is not decisive as it is used as a last resort host regardless.
+    # However, you must set it for any further virtual host explicitly.
+    ServerName project2.localhost
 
-<p>將 Port 22 修改為其他Port，使用ssh 時用-p 選項指定PORT Number</p>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html/project2
 
-<p>將<code>#PasswordAuthentication yes</code> 改為<code>PasswordAuthentication no</code></p>
+    # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+    # error, crit, alert, emerg.
+    # It is also possible to configure the loglevel for particular
+    # modules, e.g.
+    #LogLevel info ssl:warn
 
-<p>重啟SSH Service就完成了</p>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    # For most configuration files from conf-available/, which are
+    # enabled or disabled at a global level, it is possible to
+    # include a line for only one particular virtual host. For example the
+    # following line enables the CGI configuration for this host only
+    # after it has been globally disabled with "a2disconf".
+    #Include conf-available/serve-cgi-bin.conf
+&lt;/VirtualHost&gt;
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+</code></pre>
+
+<p>3.用a2ensite令該二個virtual hosts的設定生效:</p>
+
+<pre><code class="bash">sudo a2ensite /etc/apache2/sites-available/project1.conf
+sudo a2ensite /etc/apache2/sites-available/project2.conf
+</code></pre>
+
+<p>4.輸入 <code>sudo service apache2 restart</code> 重新啟動apache2</p>
 
 		</div>
-	</div>
+    	</div>
 </article>
-            <nav class="article">
-            <ul>
-                                    <li>下一篇: <a class="next" href="/b/Missing `secret_key_base` for &#039;production&#039; environment" title="Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`"><span class="title">Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</span></a></li>
-                                                    <li>上一篇: <a class="previous" href="/b/更新git branch所有舊有的電子郵件地址" title="更新git branch所有舊有的電子郵件地址"><span class="title">更新git branch所有舊有的電子郵件地址</span></a></li>
-                            </ul>
-        </nav>
-    
-        
-    <div id="disqus_thread"></div>
-    <script>
-        /**
-         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-         */
-        /*
-        var disqus_config = function () {
-            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
-        (function() {  // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-
-            s.src = '//nicksheksblog.disqus.com/embed.js';
-
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <nav class="page">
+        <a href="/page/9">更新的文章</a><br />
+        <br />
+    </nav>
   				</div>
   				<div class="col-md-4 sidebar-gutter">
   					<aside>
@@ -300,7 +347,6 @@ docker rm $(docker ps -a -q)
     hljs.initHighlightingOnLoad();
   </script>
 
-  <script id="dsq-count-scr" src="//nicksheksblog.disqus.com/count.js" async></script>
-</body>
+   </body>
 
 </html>

@@ -124,6 +124,20 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/移除及暫停所有Docker container 指令">移除及暫停所有Docker container 指令</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2017-01-12</span></div>
+		<div class="blog-post-text">
+        <p>怕自己忘記了，放上這個blog。這個指令在開發Docker Image 時還是經常使用的。</p>
+
+<pre><code class="bash">docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+</code></pre>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/ 思考在linux一次性重新命名多個file的問題">思考在linux一次性重新命名多個file的問題</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2016-10-01</span></div>
 		<div class="blog-post-text">
@@ -209,37 +223,6 @@ drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
 		</div>
     	</div>
 </article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/docker build image 時出現 no space left on device">docker build image 時出現 no space left on device</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2016-07-09</span></div>
-		<div class="blog-post-text">
-        <p>若發現明明電腦有好多空間，但是運行docker build時仍出現 no space left on device。則可以先運行docker info，若確認出現
-Storage Driver: devicemapper                              ，則表示你的image 過了Base Device Size                  。
-解決方法是找出docker.service，找出</p>
-
-<pre><code class="bash">ExecStart=/usr/bin/docker daemon -H fd://                                                                         
-</code></pre>
-
-<p>變為</p>
-
-<pre><code class="bash">ExecStart=/usr/bin/docker daemon --storage-opt dm.basesize=20G -H fd://                                                                         
-</code></pre>
-
-<p>之後請先參考自行備份<a href="https://linuxconfig.org/docker-container-backup-and-recovery">https://linuxconfig.org/docker-container-backup-and-recovery</a>原有的container</p>
-
-<p>再執行</p>
-
-<pre><code class="bash">systemctl            daemon-reload
-service docker stop
-service docker start
-</code></pre>
-
-<p>之後新加的image 就會增加了base size!</p>
-
-		</div>
-    	</div>
-</article>
     <nav class="page">
         <br />
         <a href="/page/2">更舊的文章</a><br />
@@ -283,8 +266,29 @@ service docker start
                 <h3 class="sidebar-title">好聽音樂</h3>
                 <div class="widget-container">
                   <div class="video-container">
-                   <iframe width="560" height="315" src="https://www.youtube.com/embed/2i2khp_npdE" frameborder="0" allowfullscreen></iframe>
-                   </div>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLIqPX-LFZSzdxlmyK2cHkv3HPRwmzgkRL" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+
+              <!-- sidebar-widget -->
+              <div class="sidebar-widget">
+                <h3 class="sidebar-title">實用指令</h3>
+                <div class="widget-container">
+                  <ul>
+                    <li>
+                      暫停所有Docker Container
+<pre>
+docker stop $(docker ps -a -q)
+</pre>
+                    </li>
+                    <li>
+                      移除所有Docker Container
+<pre>
+docker rm $(docker ps -a -q)
+</pre>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
@@ -300,7 +304,7 @@ service docker start
     </div>
 
     <div class="footer-bottom">
-      <i class="fa fa-copyright"></i> &copy; 2016 Nick Shek&#039;s Blog
+      <i class="fa fa-copyright"></i> &copy; 2017 Nick Shek&#039;s Blog
           </div>
   </footer>
   <!-- Bootstrap core JavaScript
