@@ -124,6 +124,36 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/在rails migration改變column type">在rails migration改變column type</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-11-26</span></div>
+		<div class="blog-post-text">
+        <p>假設我們要改變sub_anonrums table的title,將其欄位種類由:text改為:string方法如下:</p>
+
+<p>1.在project下新增一個migration file</p>
+
+<pre><code class="bash">rails g migration change_sub_anonrums_title_format
+</code></pre>
+
+<p>2.移除migration 下的change 方法,改為使用up 和down方法,migration file 的source code 如下所示: \</p>
+
+<pre><code class="ruby">class ChangeSubAnonrumsTitleFormat &lt; ActiveRecord::Migration
+  def up
+    change_column :sub_anonrums, :title, :string
+  end
+
+  def down
+    change_column :sub_anonrums, :title, :text
+  end
+end
+</code></pre>
+
+<p>3.執行 rake db:migrate</p>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/使用ubuntu在localhost建立subdomain">使用ubuntu在localhost建立subdomain</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-11-13</span></div>
 		<div class="blog-post-text">
