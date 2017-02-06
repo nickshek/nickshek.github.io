@@ -2,10 +2,11 @@
 <html>
 
 <head>
-  <title>所有文章 &mdash; Nick Shek&#039;s Blog</title>
+  <title>學習Latex &mdash; Nick Shek&#039;s Blog</title>
   <meta charset="utf-8">
   <meta name="theme-color" content="#ffffff">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">   <meta name="robots" content="noindex, follow"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">     <meta name="robots" content="index, follow">
+
   <!-- Bootstrap core CSS -->
   <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -105,7 +106,7 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="/">首頁</a></li>
-          <li class="active"><a href="/b">所有文章</a></li>
+          <li><a href="/b">所有文章</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -122,68 +123,123 @@
   		<section>
   			<div class="row">
   				<div class="col-md-8">
-  					<div class="info-block">
-  <h2>所有文章</h2>
-    <div class="post_block">
-                                            <h3 class="year_and_month">April 2015</h3>
-          <div class="post_link">
-        <a href="/b/Socket.io 1.3">Socket.io 1.3.5 cdn 同源問題</a>
-      </div>
-    </div>
-      <div class="post_block">
-                      <div class="post_link">
-        <a href="/b/如何令git repo 連接己經存在的heroku app">如何令git repo 連接己經存在的heroku app?</a>
-      </div>
-    </div>
-      <div class="post_block">
-                            <h3 class="year_and_month">March 2015</h3>
-          <div class="post_link">
-        <a href="/b/Missing `secret_key_base` for &#039;production&#039; environment">Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`</a>
-      </div>
-    </div>
-      <div class="post_block">
-                      <div class="post_link">
-        <a href="/b/如何令你使用SSH時更安全">如何令你使用SSH時更安全?</a>
-      </div>
-    </div>
-      <div class="post_block">
-                            <h3 class="year_and_month">February 2015</h3>
-          <div class="post_link">
-        <a href="/b/更新git branch所有舊有的電子郵件地址">更新git branch所有舊有的電子郵件地址</a>
-      </div>
-    </div>
-      <div class="post_block">
-                            <h3 class="year_and_month">January 2015</h3>
-          <div class="post_link">
-        <a href="/b/react-rails.git (at master) is not yet checked out">git://github.com/reactjs/react-rails.git (at master) is not yet checked out. Run `bundle install` first.</a>
-      </div>
-    </div>
-      <div class="post_block">
-                      <div class="post_link">
-        <a href="/b/debug">debug.py =&gt; IndexError: list index out of range</a>
-      </div>
-    </div>
-      <div class="post_block">
-                      <div class="post_link">
-        <a href="/b/從fontello下載font icon,及使用Nokogiri製作一張font icon class 的名單">從http://fontello.com/下載font icon,及使用Nokogiri製作一張font icon class 的名單</a>
-      </div>
-    </div>
-      <div class="post_block">
-                      <div class="post_link">
-        <a href="/b/TypeError: deepestAncestor is undefined">TypeError: deepestAncestor is undefined</a>
-      </div>
-    </div>
-      <div class="post_block">
-                      <div class="post_link">
-        <a href="/b/redis在socket">redis在socket.io接收多次重覆信息問題</a>
-      </div>
-    </div>
+  					<article class="blog-post">
+  	<div class="blog-post-body">
+		<h2><a href="#">學習Latex</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2017-02-06</span></div>
+		<div class="blog-post-text">
+        <p>近期對Latex相當有興趣， 之前曾經稍為在Wiki了解過Latex，覺得Symbol好像看起來好像好複雜，所以便提不起興趣學了。
+直至近期發現好多整齊漂亮的pdf文件原來都是由Latex的編譯器建立，便開始想了解一下，當學習一個全新的markup language。
+以下的範例會建立一個pdf文件，簡單地記綠「Today I Learned」，好像<a href="https://github.com/thoughtbot/til">https://github.com/thoughtbot/til</a> 或 <a href="https://github.com/jbranchaud/til">https://github.com/jbranchaud/til</a>，只是用Latex編寫而已，雖然這個情況或者用markdown會比較合適，但是用來練習Latex也不錯:</p>
+
+<p>首先安裝 texlive:</p>
+
+<pre><code>sudo apt-get install texlive-full
+</code></pre>
+
+<p>Text Editor 我覺得用atom便好了無需再額多安裝 texmaker。反正本身電腦只使用了128G SSD， 沒有太多空間...</p>
+
+<p>之後把以下原始碼儲存為main.tex，不妨花點時間了解一下latex語法，推薦不妨抽少少時間看看<a href="https://tobi.oetiker.ch/lshort/lshort.pdf">Latex in 157 minutes</a></p>
+
+<pre><code><br />\documentclass{article}
+
+\usepackage{hyperref}
+
+\RequirePackage{fontspec}
+\RequirePackage{xeCJK}
+
+\setCJKmainfont{Droid Sans Fallback}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\title{Today I learned.今日我所學}
+\author{Nick Shek}
+\date{2017-02-07}
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+
+\tableofcontents
+
+\clearpage
+
+\section{MySQL}
+
+\begin{itemize}
+\item Setting up MySQL replication without the downtime: \href{https://plusbryan.com/mysql-replication-without-downtime}{https://plusbryan.com/mysql-replication-without-downtime}
+\end{itemize}
+
+\section{Latex}
+
+\begin{itemize}
+\item Latex 中文化解決方案:
+  \begin{itemize}
+    \item \href{https://goo.gl/6ajvrM}{https://goo.gl/6ajvrM}
+    \item \href{http://pangomi.blogspot.hk/2012/11/latex-in-ubuntu.html}{http://pangomi.blogspot.hk/2012/11/latex-in-ubuntu.html}
+  \end{itemize}
+\item Create Table of contents in Latex \href{https://www.sharelatex.com/learn/Table\_of\_contents}{https://www.sharelatex.com/learn/Table\_of\_contents}
+\end{itemize}
+
+
+
+
+
+\end{document}
+
+</code></pre>
+
+<p>確保Droid Sans Fallback字型已經安裝後，執行</p>
+
+<pre><code>xelatex main.tex
+</code></pre>
+
+<p>如無意外，便能成功建立一個pdf，及中文字型能正確顯示。</p>
+
+<p>參考了不同網站後，現在總算能輕鬆建立pdf，而pdf本身能顯示中文。
+了解Latex基本Symbol後，其實建立一份Latex 沒有想像中那麼複雜。</p>
+
+<p>如有興趣，也不妨看看: <a href="https://github.com/nickshek/latex-til">https://github.com/nickshek/latex-til</a></p>
+
+<p>有時間的話會不定期更新</p>
+
+<p>Source: <a href="http://milq.github.io/install-latex-ubuntu-debian/">http://milq.github.io/install-latex-ubuntu-debian/</a></p>
+
+		</div>
+	</div>
+</article>
+            <nav class="article">
+            <ul>
+                                                    <li>上一篇: <a class="previous" href="/b/用ansible去傳送電子郵件" title="用ansible去傳送電子郵件"><span class="title">用ansible去傳送電子郵件</span></a></li>
+                            </ul>
+        </nav>
     
-        <nav class="article clearfix">
-            <a class="previous" href="/b" title="Previous Page"><span class="title">上一頁</span></a>
-                  <a class="next" href="/b/page/3.html" title="Next Page"><span class="title">下一頁</span></a>
-            </nav>
-  </div>  				</div>
+        
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+         */
+        /*
+        var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() {  // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//nicksheksblog.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  				</div>
   				<div class="col-md-4 sidebar-gutter">
   					<aside>
               <!-- sidebar-widget -->
@@ -293,6 +349,7 @@ docker rm $(docker ps -a -q)
     hljs.initHighlightingOnLoad();
   </script>
 
-   </body>
+  <script id="dsq-count-scr" src="//nicksheksblog.disqus.com/count.js" async></script>
+</body>
 
 </html>

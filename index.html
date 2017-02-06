@@ -124,6 +124,93 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/學習Latex">學習Latex</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2017-02-06</span></div>
+		<div class="blog-post-text">
+        <p>近期對Latex相當有興趣， 之前曾經稍為在Wiki了解過Latex，覺得Symbol好像看起來好像好複雜，所以便提不起興趣學了。
+直至近期發現好多整齊漂亮的pdf文件原來都是由Latex的編譯器建立，便開始想了解一下，當學習一個全新的markup language。
+以下的範例會建立一個pdf文件，簡單地記綠「Today I Learned」，好像<a href="https://github.com/thoughtbot/til">https://github.com/thoughtbot/til</a> 或 <a href="https://github.com/jbranchaud/til">https://github.com/jbranchaud/til</a>，只是用Latex編寫而已，雖然這個情況或者用markdown會比較合適，但是用來練習Latex也不錯:</p>
+
+<p>首先安裝 texlive:</p>
+
+<pre><code>sudo apt-get install texlive-full
+</code></pre>
+
+<p>Text Editor 我覺得用atom便好了無需再額多安裝 texmaker。反正本身電腦只使用了128G SSD， 沒有太多空間...</p>
+
+<p>之後把以下原始碼儲存為main.tex，不妨花點時間了解一下latex語法，推薦不妨抽少少時間看看<a href="https://tobi.oetiker.ch/lshort/lshort.pdf">Latex in 157 minutes</a></p>
+
+<pre><code><br />\documentclass{article}
+
+\usepackage{hyperref}
+
+\RequirePackage{fontspec}
+\RequirePackage{xeCJK}
+
+\setCJKmainfont{Droid Sans Fallback}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\title{Today I learned.今日我所學}
+\author{Nick Shek}
+\date{2017-02-07}
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+
+\tableofcontents
+
+\clearpage
+
+\section{MySQL}
+
+\begin{itemize}
+\item Setting up MySQL replication without the downtime: \href{https://plusbryan.com/mysql-replication-without-downtime}{https://plusbryan.com/mysql-replication-without-downtime}
+\end{itemize}
+
+\section{Latex}
+
+\begin{itemize}
+\item Latex 中文化解決方案:
+  \begin{itemize}
+    \item \href{https://goo.gl/6ajvrM}{https://goo.gl/6ajvrM}
+    \item \href{http://pangomi.blogspot.hk/2012/11/latex-in-ubuntu.html}{http://pangomi.blogspot.hk/2012/11/latex-in-ubuntu.html}
+  \end{itemize}
+\item Create Table of contents in Latex \href{https://www.sharelatex.com/learn/Table\_of\_contents}{https://www.sharelatex.com/learn/Table\_of\_contents}
+\end{itemize}
+
+
+
+
+
+\end{document}
+
+</code></pre>
+
+<p>確保Droid Sans Fallback字型已經安裝後，執行</p>
+
+<pre><code>xelatex main.tex
+</code></pre>
+
+<p>如無意外，便能成功建立一個pdf，及中文字型能正確顯示。</p>
+
+<p>參考了不同網站後，現在總算能輕鬆建立pdf，而pdf本身能顯示中文。
+了解Latex基本Symbol後，其實建立一份Latex 沒有想像中那麼複雜。</p>
+
+<p>如有興趣，也不妨看看: <a href="https://github.com/nickshek/latex-til">https://github.com/nickshek/latex-til</a></p>
+
+<p>有時間的話會不定期更新</p>
+
+<p>Source: <a href="http://milq.github.io/install-latex-ubuntu-debian/">http://milq.github.io/install-latex-ubuntu-debian/</a></p>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/用ansible去傳送電子郵件">用ansible去傳送電子郵件</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2017-01-26</span></div>
 		<div class="blog-post-text">
@@ -267,68 +354,6 @@ localhost ansible_connection=local
 
 <pre><code class="bash">docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
-</code></pre>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/ 思考在linux一次性重新命名多個file的問題">思考在linux一次性重新命名多個file的問題</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2016-10-01</span></div>
-		<div class="blog-post-text">
-        <p>作為一個偏好使用Linux平台的Developer， 或會經常遇到一次性命名多個File的問題。
-如果File數目不算多的話，還可以透過mv command 一一執行。
-但是如果遇上成千隻呢?那肯定要想一個較有效率的方法!
-逐一人手命名檔案不合理呢!</p>
-
-<p>說實話，如果我自已遇到這個問題不懂思考如何解決，我自已都過不了自己那一關!</p>
-
-<p>現在假設我們要把檔案名稱含有"a_"的名字改為"abc_"</p>
-
-<pre><code class="bash">shek@shek-pc:~/folder$ ls -la
-total 8
-drwxrwxr-x   2 shek shek 4096 Oct  1 01:53 .
-drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
--rw-rw-r--   1 shek shek    0 Oct  1 01:30 a_b.txt
--rw-rw-r--   1 shek shek    0 Oct  1 01:30 a_c.txt
--rw-rw-r--   1 shek shek    0 Oct  1 01:53 b.txt
-</code></pre>
-
-<p>一般來說命名多個檔案的linux command 會類似這樣:</p>
-
-<pre><code class="bash">for FILENAME in *; do mv $FILENAME Unix_$FILENAME; done
-</code></pre>
-
-<p>但我自已就想到用ls + awk + sed 解決這個問題，awk 和sed 非常實用，小弟真的要花點時間再深入看看awk 和 sed 有什麼其他功能...首先是要Filter我們想要的File名</p>
-
-<pre><code class="bash">shek@shek-pc:~/folder$ ls -la | grep a | awk '{print $9}'
-
-a_b.txt
-a_c.txt
-
-</code></pre>
-
-<p>之後便行for loop了，為了安全起見還是不直接執行，列印了想行的command再執行</p>
-
-<pre><code class="bash">shek@shek-pc:~/folder$ for i in $(ls -la | grep a | awk '{print $9}'); do echo mv $i $(echo $i|sed 's/a_/abc_/g') \&amp;\&amp;; done
-mv a_b.txt abc_b.txt &amp;&amp;
-mv a_c.txt abc_c.txt &amp;&amp;
-</code></pre>
-
-<p>之後執行以下command 便完成了!</p>
-
-<pre><code class="bash">mv a_b.txt abc_b.txt &amp;&amp;
-mv a_c.txt abc_c.txt
-</code></pre>
-
-<pre><code class="bash">shek@shek-pc:~/folder$ ls -la
-total 8
-drwxrwxr-x   2 shek shek 4096 Oct  1 02:02 .
-drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
--rw-rw-r--   1 shek shek    0 Oct  1 01:30 abc_b.txt
--rw-rw-r--   1 shek shek    0 Oct  1 01:30 abc_c.txt
--rw-rw-r--   1 shek shek    0 Oct  1 01:53 b.txt
 </code></pre>
 
 		</div>
