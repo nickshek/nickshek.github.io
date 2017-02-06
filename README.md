@@ -1,5 +1,3 @@
-<h1 id="a-simple-blog-powered-by-sculpin">A Simple blog powered by <a href="http://sculpin.io">Sculpin</a></h1>
+# A Simple blog powered by [Sculpin](http://sculpin.io)
 
-<ul>
-<li>The source code is automatically generated from <a href="https://github.com/nickshek/site">nickshek/site</a></li>
-</ul>
+- The source code is automatically generated from the project [nickshek/site](https://github.com/nickshek/site)
