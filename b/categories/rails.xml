@@ -3,22 +3,22 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/rails.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Missing `secret_key_base` for &#039;production&#039; environment, set this value in `config/secrets.yml`]]></title>
-            <link href="/b/Missing `secret_key_base` for &#039;production&#039; environment"/>
+            <link href="/b/Missing `secret_key_base` for &#039;production&#039; environment/"/>
             <updated>2015-03-14T00:00:00+08:00</updated>
-            <id>/b/Missing `secret_key_base` for &#039;production&#039; environment</id>
+            <id>/b/Missing `secret_key_base` for &#039;production&#039; environment/</id>
             <content type="html"><![CDATA[<p>執行<code>rake secret</code> 在.bashrc 或在apache 使用SetEnv指令 設定環境變數 SECRET_KEY_BASE 就完成了。不建議把 secret token 設定在 config/secrets.yml</p>
 ]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[git://github.com/reactjs/react-rails.git (at master) is not yet checked out. Run `bundle install` first.]]></title>
-            <link href="/b/react-rails.git (at master) is not yet checked out"/>
+            <link href="/b/react-rails.git (at master) is not yet checked out/"/>
             <updated>2015-01-26T00:00:00+08:00</updated>
-            <id>/b/react-rails.git (at master) is not yet checked out</id>
+            <id>/b/react-rails.git (at master) is not yet checked out/</id>
             <content type="html"><![CDATA[<p>根據<a href="https://github.com/bundler/bundler/blob/master/ISSUES.md">https://github.com/bundler/bundler/blob/master/ISSUES.md</a>，解決方是執行以下程式碼，重新安裝 dependencies :</p>
 
 <pre><code class="bash"># remove user-specific gems and git repos
@@ -47,9 +47,9 @@ bundle install
         </entry>
             <entry>
             <title type="html"><![CDATA[Friendly ID中文問題]]></title>
-            <link href="/b/Friendly ID中文問題"/>
+            <link href="/b/Friendly ID中文問題/"/>
             <updated>2014-12-20T00:00:00+08:00</updated>
-            <id>/b/Friendly ID中文問題</id>
+            <id>/b/Friendly ID中文問題/</id>
             <content type="html"><![CDATA[<p>主要在Gemfile加下以下指令以安裝 babosa</p>
 
 <pre><code class="ruby">gem "babosa"
@@ -69,9 +69,9 @@ end
         </entry>
             <entry>
             <title type="html"><![CDATA[在rails migration改變column type]]></title>
-            <link href="/b/在rails migration改變column type"/>
+            <link href="/b/在rails migration改變column type/"/>
             <updated>2014-11-26T00:00:00+08:00</updated>
-            <id>/b/在rails migration改變column type</id>
+            <id>/b/在rails migration改變column type/</id>
             <content type="html"><![CDATA[<p>假設我們要改變sub_anonrums table的title,將其欄位種類由:text改為:string方法如下:</p>
 
 <p>1.在project下新增一個migration file</p>

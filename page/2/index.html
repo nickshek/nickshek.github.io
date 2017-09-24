@@ -124,7 +124,21 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
-		<h2><a href="/b/ 思考在linux一次性重新命名多個file的問題">思考在linux一次性重新命名多個file的問題</a></h2>
+		<h2><a href="/b/移除及暫停所有Docker container 指令/">移除及暫停所有Docker container 指令</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2017-01-12</span></div>
+		<div class="blog-post-text">
+        <p>怕自己忘記了，放上這個blog。這個指令在開發Docker Image 時還是經常使用的。</p>
+
+<pre><code class="bash">docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+</code></pre>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
+		<h2><a href="/b/ 思考在linux一次性重新命名多個file的問題/">思考在linux一次性重新命名多個file的問題</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2016-10-01</span></div>
 		<div class="blog-post-text">
         <p>作為一個偏好使用Linux平台的Developer， 或會經常遇到一次性命名多個File的問題。
@@ -186,7 +200,7 @@ drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
 </article>
 <article class="blog-post">
   	<div class="blog-post-body">
-		<h2><a href="/b/執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;">執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;</a></h2>
+		<h2><a href="/b/執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;/">執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2016-07-10</span></div>
 		<div class="blog-post-text">
         <p>執行Laravel Project的PHPUnit 若出現</p>
@@ -209,39 +223,8 @@ drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
 		</div>
     	</div>
 </article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/docker build image 時出現 no space left on device">docker build image 時出現 no space left on device</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2016-07-09</span></div>
-		<div class="blog-post-text">
-        <p>若發現明明電腦有好多空間，但是運行docker build時仍出現 no space left on device。則可以先運行docker info，若確認出現
-Storage Driver: devicemapper                              ，則表示你的image 過了Base Device Size                  。
-解決方法是找出docker.service，找出</p>
-
-<pre><code class="bash">ExecStart=/usr/bin/docker daemon -H fd://                                                                         
-</code></pre>
-
-<p>變為</p>
-
-<pre><code class="bash">ExecStart=/usr/bin/docker daemon --storage-opt dm.basesize=20G -H fd://                                                                         
-</code></pre>
-
-<p>之後請先參考自行備份<a href="https://linuxconfig.org/docker-container-backup-and-recovery">https://linuxconfig.org/docker-container-backup-and-recovery</a>原有的container</p>
-
-<p>再執行</p>
-
-<pre><code class="bash">systemctl            daemon-reload
-service docker stop
-service docker start
-</code></pre>
-
-<p>之後新加的image 就會增加了base size!</p>
-
-		</div>
-    	</div>
-</article>
     <nav class="page">
-        <a href="/">更新的文章</a><br />
+        <a href="/.">更新的文章</a><br />
         <a href="/page/3">更舊的文章</a><br />
     </nav>
   				</div>

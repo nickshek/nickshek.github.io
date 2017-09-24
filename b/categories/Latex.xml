@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/Latex.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[學習Latex]]></title>
-            <link href="/b/學習Latex"/>
+            <link href="/b/學習Latex/"/>
             <updated>2017-02-06T00:00:00+08:00</updated>
-            <id>/b/學習Latex</id>
+            <id>/b/學習Latex/</id>
             <content type="html"><![CDATA[<p>近期對Latex相當有興趣， 之前曾經稍為在Wiki了解過Latex，覺得Symbol好像看起來好像好複雜，所以便提不起興趣學了。
 直至近期發現好多整齊漂亮的pdf文件原來都是由Latex的編譯器建立，便開始想了解一下，當學習一個全新的markup language。
 以下的範例會建立一個pdf文件，簡單地記綠「Today I Learned」，好像<a href="https://github.com/thoughtbot/til">https://github.com/thoughtbot/til</a> 或 <a href="https://github.com/jbranchaud/til">https://github.com/jbranchaud/til</a>，只是用Latex編寫而已，雖然這個情況或者用markdown會比較合適，但是用來練習Latex也不錯:</p>

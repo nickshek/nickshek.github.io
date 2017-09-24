@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/ubuntu.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[在ubuntu移除圖片的metadata]]></title>
-            <link href="/b/在ubuntu移除圖片的metadata"/>
+            <link href="/b/在ubuntu移除圖片的metadata/"/>
             <updated>2014-12-07T00:00:00+08:00</updated>
-            <id>/b/在ubuntu移除圖片的metadata</id>
+            <id>/b/在ubuntu移除圖片的metadata/</id>
             <content type="html"><![CDATA[<p>1.安裝exiftool:</p>
 
 <pre><code class="bash">sudo apt-get install libimage-exiftool-perl

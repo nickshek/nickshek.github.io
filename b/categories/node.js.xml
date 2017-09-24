@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/node.js.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[redis在socket.io接收多次重覆信息問題]]></title>
-            <link href="/b/redis在socket"/>
+            <link href="/b/redis在socket/"/>
             <updated>2015-01-17T00:00:00+08:00</updated>
-            <id>/b/redis在socket</id>
+            <id>/b/redis在socket/</id>
             <content type="html"><![CDATA[<p>在網上看到一個範例，展示了redis 如何配合socket.io進行互動的source code :</p>
 
 <pre><code class="javascript">io.on('connection', function(socket){
@@ -35,9 +35,9 @@ io.on('connection', function(socket){
         </entry>
             <entry>
             <title type="html"><![CDATA[將package.json入面所有的dependencies更新至最新版本]]></title>
-            <link href="/b/將package"/>
+            <link href="/b/將package/"/>
             <updated>2015-01-16T00:00:00+08:00</updated>
-            <id>/b/將package</id>
+            <id>/b/將package/</id>
             <content type="html"><![CDATA[<p>在package,json內，將dependencies入面所有版本的號碼改成*，例如</p>
 
 <pre><code class="json">"dependencies" : {

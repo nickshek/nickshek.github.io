@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/linux.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[使用sftp時出現&quot;connection reset by peer connection closed&quot;]]></title>
-            <link href="/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;"/>
+            <link href="/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;/"/>
             <updated>2016-06-24T00:00:00+08:00</updated>
-            <id>/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;</id>
+            <id>/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;/</id>
             <content type="html"><![CDATA[<p>若新加的sftp帳戶發現，出現connection reset by peer connection closed的錯誤訊息，應該先用cat 查看/etc/rsyslog.conf了解找出出現
 auth,authpriv.*　的行數，便清楚需要查看那個log file以獲取進一步的資訊。若系統是Centos，多數是查看/var/log/secure，ubuntu 則查看
 /var/log/auth.log。</p>
@@ -27,9 +27,9 @@ auth,authpriv.*　的行數，便清楚需要查看那個log file以獲取進一
         </entry>
             <entry>
             <title type="html"><![CDATA[如何令你使用SSH時更安全?]]></title>
-            <link href="/b/如何令你使用SSH時更安全"/>
+            <link href="/b/如何令你使用SSH時更安全/"/>
             <updated>2015-03-02T00:00:00+08:00</updated>
-            <id>/b/如何令你使用SSH時更安全</id>
+            <id>/b/如何令你使用SSH時更安全/</id>
             <content type="html"><![CDATA[<p>要令SSH登入更安全，最簡單的方法是取消密碼登入。而使用公開金鑰。</p>
 
 <p>在Client輸入</p>
@@ -62,9 +62,9 @@ auth,authpriv.*　的行數，便清楚需要查看那個log file以獲取進一
         </entry>
             <entry>
             <title type="html"><![CDATA[在Linux terminal列輸出己整理的JSON]]></title>
-            <link href="/b/在Linux terminal列輸出己整理的JSON"/>
+            <link href="/b/在Linux terminal列輸出己整理的JSON/"/>
             <updated>2015-01-11T00:00:00+08:00</updated>
-            <id>/b/在Linux terminal列輸出己整理的JSON</id>
+            <id>/b/在Linux terminal列輸出己整理的JSON/</id>
             <content type="html"><![CDATA[<p>在terminal 輸入 <code>curl http://it-ebooks-api.info/v1/search/python</code> ，輸出是一堆壓縮了的JSON。</p>
 
 <p>只要輸入 <code>curl http://it-ebooks-api.info/v1/search/python | python -mjson.tool</code> ，便能輸出整理好的JSON了。</p>

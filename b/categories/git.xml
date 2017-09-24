@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/git.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[更新git branch所有舊有的電子郵件地址]]></title>
-            <link href="/b/更新git branch所有舊有的電子郵件地址"/>
+            <link href="/b/更新git branch所有舊有的電子郵件地址/"/>
             <updated>2015-02-24T00:00:00+08:00</updated>
-            <id>/b/更新git branch所有舊有的電子郵件地址</id>
+            <id>/b/更新git branch所有舊有的電子郵件地址/</id>
             <content type="html"><![CDATA[<p>修改以下的OLD_EMAIL，CORRECT_NAME 及 CORRECT_EMAIL 的值再把以下script移至想更新的git repository 再執行就可以了</p>
 
 <script src="https://gist.github.com/octocat/0831f3fbd83ac4d46451.js"></script>
@@ -18,9 +18,9 @@
         </entry>
             <entry>
             <title type="html"><![CDATA[把現有的project folder變為git repository]]></title>
-            <link href="/b/把現有的project folder變為git repository"/>
+            <link href="/b/把現有的project folder變為git repository/"/>
             <updated>2014-12-15T00:00:00+08:00</updated>
-            <id>/b/把現有的project folder變為git repository</id>
+            <id>/b/把現有的project folder變為git repository/</id>
             <content type="html"><![CDATA[<p>首先，在localhost建立一個假project</p>
 
 <pre><code class="bash">cd ~/

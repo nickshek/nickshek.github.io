@@ -124,7 +124,33 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
-		<h2><a href="/b/在Linux terminal列輸出己整理的JSON">在Linux terminal列輸出己整理的JSON</a></h2>
+		<h2><a href="/b/將package/">將package.json入面所有的dependencies更新至最新版本</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-01-16</span></div>
+		<div class="blog-post-text">
+        <p>在package,json內，將dependencies入面所有版本的號碼改成*，例如</p>
+
+<pre><code class="json">"dependencies" : {
+  "socket.io" : "0.9.12",
+  "redis": "0.7.3"
+}
+</code></pre>
+
+<p>改為</p>
+
+<pre><code class="json">"dependencies" : {
+  "socket.io" : "*",
+  "redis": "*"
+}
+</code></pre>
+
+<p>再執行<code>npm update --save</code></p>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
+		<h2><a href="/b/在Linux terminal列輸出己整理的JSON/">在Linux terminal列輸出己整理的JSON</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-01-11</span></div>
 		<div class="blog-post-text">
         <p>在terminal 輸入 <code>curl http://it-ebooks-api.info/v1/search/python</code> ，輸出是一堆壓縮了的JSON。</p>
@@ -136,7 +162,7 @@
 </article>
 <article class="blog-post">
   	<div class="blog-post-body">
-		<h2><a href="/b/利用regular expression判斷URL是否為YouTube URL，且return youtube video ID">利用regular expression判斷URL是否為YouTube URL，且return youtube video ID</a></h2>
+		<h2><a href="/b/利用regular expression判斷URL是否為YouTube URL，且return youtube video ID/">利用regular expression判斷URL是否為YouTube URL，且return youtube video ID</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-30</span></div>
 		<div class="blog-post-text">
         <p>在以下的Stack Overflow網址，有人寫了一句相當強大的regular expression來完成該使命</p>
@@ -193,30 +219,6 @@ if __name__ == "__main__":
 </code></pre>
 
 <p>假設將以下的Python程式碼儲存成youtube.py，執行 <code>python youtube.py -v</code> 便可以執行doctest了。</p>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/Friendly ID中文問題">Friendly ID中文問題</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-20</span></div>
-		<div class="blog-post-text">
-        <p>主要在Gemfile加下以下指令以安裝 babosa</p>
-
-<pre><code class="ruby">gem "babosa"
-</code></pre>
-
-<p>再在需要中文URL的Model下override normalize_friendly_id方法:</p>
-
-<pre><code class="ruby">def normalize_friendly_id(input)
-  input.to_s.to_slug.normalize.to_s
-end
-</code></pre>
-
-<p>以下網誌有詳細解釋:</p>
-
-<p>使用 Babosa 配合 Friendly_id 解決中文網址問題 : <a href="http://blog.roachking.net/blog/2014/01/17/babosa-friendly-id-solve-chinese-problems/">http://blog.roachking.net/blog/2014/01/17/babosa-friendly-id-solve-chinese-problems/</a></p>
 
 		</div>
     	</div>

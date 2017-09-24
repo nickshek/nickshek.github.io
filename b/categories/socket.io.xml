@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/socket.io.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Socket.io 1.3.5 cdn 同源問題]]></title>
-            <link href="/b/Socket.io 1.3"/>
+            <link href="/b/Socket.io 1.3/"/>
             <updated>2015-04-15T00:00:00+08:00</updated>
-            <id>/b/Socket.io 1.3</id>
+            <id>/b/Socket.io 1.3/</id>
             <content type="html"><![CDATA[<p>假設己經有一個HTTPS加密網站，為了令網站更快速。因此Socket.io使用了以下的javascript cdn :</p>
 
 <pre><code class="html">&lt;script src="https://cdn.socket.io/socket.io-1.3.4.js"&gt;&lt;/script&gt;

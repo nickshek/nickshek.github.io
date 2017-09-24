@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/react.js.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[TypeError: deepestAncestor is undefined]]></title>
-            <link href="/b/TypeError: deepestAncestor is undefined"/>
+            <link href="/b/TypeError: deepestAncestor is undefined/"/>
             <updated>2015-01-18T00:00:00+08:00</updated>
-            <id>/b/TypeError: deepestAncestor is undefined</id>
+            <id>/b/TypeError: deepestAncestor is undefined/</id>
             <content type="html"><![CDATA[<p>使用react.js遇到一個奇怪的問題 : TypeError: deepestAncestor is undefined</p>
 
 <p>但是當按F5問題又消失了，去其他頁面有時會有這個問題。</p>

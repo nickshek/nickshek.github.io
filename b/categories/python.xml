@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/python.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[利用regular expression判斷URL是否為YouTube URL，且return youtube video ID]]></title>
-            <link href="/b/利用regular expression判斷URL是否為YouTube URL，且return youtube video ID"/>
+            <link href="/b/利用regular expression判斷URL是否為YouTube URL，且return youtube video ID/"/>
             <updated>2014-12-30T00:00:00+08:00</updated>
-            <id>/b/利用regular expression判斷URL是否為YouTube URL，且return youtube video ID</id>
+            <id>/b/利用regular expression判斷URL是否為YouTube URL，且return youtube video ID/</id>
             <content type="html"><![CDATA[<p>在以下的Stack Overflow網址，有人寫了一句相當強大的regular expression來完成該使命</p>
 
 <p>stackoverflow : <a href="http://stackoverflow.com/questions/2964678/jquery-youtube-url-validation-with-regex/10315969#10315969">jQuery Youtube URL Validation with regex</a></p>

@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/django.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[debug.py =&gt; IndexError: list index out of range]]></title>
-            <link href="/b/debug"/>
+            <link href="/b/debug/"/>
             <updated>2015-01-22T00:00:00+08:00</updated>
-            <id>/b/debug</id>
+            <id>/b/debug/</id>
             <content type="html"><![CDATA[<p>若該錯誤來自Django項目的debug.py，解決方法是修改_get_lines_from_file方法，把以下這一行:</p>
 
 <pre><code class="python">source = f.readlines()

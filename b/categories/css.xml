@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/css.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[令你的youtube embed code變為responsive]]></title>
-            <link href="/b/令你的youtube embed code變為responsive"/>
+            <link href="/b/令你的youtube embed code變為responsive/"/>
             <updated>2014-12-10T00:00:00+08:00</updated>
-            <id>/b/令你的youtube embed code變為responsive</id>
+            <id>/b/令你的youtube embed code變為responsive/</id>
             <content type="html"><![CDATA[<p>把youtube的Embed HTML由</p>
 
 <pre><code class="html">&lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;

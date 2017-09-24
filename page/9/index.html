@@ -124,7 +124,31 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
-		<h2><a href="/b/把現有的project folder變為git repository">把現有的project folder變為git repository</a></h2>
+		<h2><a href="/b/Friendly ID中文問題/">Friendly ID中文問題</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-20</span></div>
+		<div class="blog-post-text">
+        <p>主要在Gemfile加下以下指令以安裝 babosa</p>
+
+<pre><code class="ruby">gem "babosa"
+</code></pre>
+
+<p>再在需要中文URL的Model下override normalize_friendly_id方法:</p>
+
+<pre><code class="ruby">def normalize_friendly_id(input)
+  input.to_s.to_slug.normalize.to_s
+end
+</code></pre>
+
+<p>以下網誌有詳細解釋:</p>
+
+<p>使用 Babosa 配合 Friendly_id 解決中文網址問題 : <a href="http://blog.roachking.net/blog/2014/01/17/babosa-friendly-id-solve-chinese-problems/">http://blog.roachking.net/blog/2014/01/17/babosa-friendly-id-solve-chinese-problems/</a></p>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
+		<h2><a href="/b/把現有的project folder變為git repository/">把現有的project folder變為git repository</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-15</span></div>
 		<div class="blog-post-text">
         <p>首先，在localhost建立一個假project</p>
@@ -180,7 +204,7 @@ git init --bare
 </article>
 <article class="blog-post">
   	<div class="blog-post-body">
-		<h2><a href="/b/令你的youtube embed code變為responsive">令你的youtube embed code變為responsive</a></h2>
+		<h2><a href="/b/令你的youtube embed code變為responsive/">令你的youtube embed code變為responsive</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-10</span></div>
 		<div class="blog-post-text">
         <p>把youtube的Embed HTML由</p>
@@ -213,22 +237,6 @@ git init --bare
     height: 100%;
 }
 </code></pre>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/HKTV 選戰 插曲">HKTV 選戰 插曲</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-10</span></div>
-		<div class="blog-post-text">
-        <p>值得你付出8元去下載這首歌以支持香港音樂</p>
-
-<p>ITunes下載連結<a href="https://itunes.apple.com/hk/album/ill-be-there-hktv-ju-ji-xuan/id946282372?i=946282373">陳詩慧 Eva Chan - I’ll Be There</a></p>
-
-<div class="video-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/AsHKOH03mxw" frameborder="0" allowfullscreen></iframe>
-</div>
 
 		</div>
     	</div>

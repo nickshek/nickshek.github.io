@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/php.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-09-24T16:28:05+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Failed to listen on localhost:8000 (reason: Address already in use)]]></title>
-            <link href="/b/Failed to listen on localhost:8000 (reason: Address already in use)"/>
+            <link href="/b/Failed to listen on localhost:8000 (reason: Address already in use)/"/>
             <updated>2015-11-15T00:00:00+08:00</updated>
-            <id>/b/Failed to listen on localhost:8000 (reason: Address already in use)</id>
+            <id>/b/Failed to listen on localhost:8000 (reason: Address already in use)/</id>
             <content type="html"><![CDATA[<p>若使用 <code>php -S localhost:8000</code>來進行development時，沒有使用control +C 結束程序，便會發生該問題，因此可以建立以下bashscript結束名為"php"的proceses</p>
 
 <pre><code class="bash">#!/bin/bash
