@@ -3,14 +3,14 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/Docker.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-02-15T00:34:00+08:00</updated>
+    <updated>2017-11-20T01:53:55+08:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[移除及暫停所有Docker container 指令]]></title>
-            <link href="/b/移除及暫停所有Docker container 指令"/>
+            <link href="/b/移除及暫停所有Docker container 指令/"/>
             <updated>2017-01-12T00:00:00+08:00</updated>
-            <id>/b/移除及暫停所有Docker container 指令</id>
+            <id>/b/移除及暫停所有Docker container 指令/</id>
             <content type="html"><![CDATA[<p>怕自己忘記了，放上這個blog。這個指令在開發Docker Image 時還是經常使用的。</p>
 
 <pre><code class="bash">docker stop $(docker ps -a -q)
