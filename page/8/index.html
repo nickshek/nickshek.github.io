@@ -125,6 +125,35 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/redis在socket/">redis在socket.io接收多次重覆信息問題</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-01-17</span></div>
+		<div class="blog-post-text">
+        <p>在網上看到一個範例，展示了redis 如何配合socket.io進行互動的source code :</p>
+
+<pre><code class="javascript">io.on('connection', function(socket){
+  redis.on('message', function(channel, message){
+    socket.emit(channel, JSON.parse(message));
+  });
+});
+</code></pre>
+
+<p>這段程式碼有一個問題,就是會因為client的數目增加而令redis接收message的handler觸發多次，因此向每一個socket.io client 傳送了多次重覆的信息。解決方法是將redis的程式碼移出<code>io.on('connection', function(socket){ .. });</code> :</p>
+
+<pre><code class="javascript">redis.on('message', function(channel, message){
+  //socket.emit改為io.sockets.emit ,信息傳送給所有人
+  io.sockets.emit(channel, JSON.parse(message));
+});
+
+io.on('connection', function(socket){
+//當有新的connection要處理的程式碼
+});
+</code></pre>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/將package/">將package.json入面所有的dependencies更新至最新版本</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-01-16</span></div>
 		<div class="blog-post-text">
@@ -157,69 +186,6 @@
         <p>在terminal 輸入 <code>curl http://it-ebooks-api.info/v1/search/python</code> ，輸出是一堆壓縮了的JSON。</p>
 
 <p>只要輸入 <code>curl http://it-ebooks-api.info/v1/search/python | python -mjson.tool</code> ，便能輸出整理好的JSON了。</p>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/利用regular expression判斷URL是否為YouTube URL，且return youtube video ID/">利用regular expression判斷URL是否為YouTube URL，且return youtube video ID</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-30</span></div>
-		<div class="blog-post-text">
-        <p>在以下的Stack Overflow網址，有人寫了一句相當強大的regular expression來完成該使命</p>
-
-<p>stackoverflow : <a href="http://stackoverflow.com/questions/2964678/jquery-youtube-url-validation-with-regex/10315969#10315969">jQuery Youtube URL Validation with regex</a></p>
-
-<pre><code class="javascript">/**
- * JavaScript function to match (and return) the video Id
- * of any valid Youtube Url, given as input string.
- * @author: Stephan Schmitz eyecatchup@gmail.com
- * @url: http://stackoverflow.com/a/10315969/624466
- */
-function ytVidId(url) {
-  var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&amp;v=))((\w|-){11})(?:\S+)?$/;
-  return (url.match(p)) ? RegExp.$1 : false;
-}
-</code></pre>
-
-<p>以下的程式碼用Python完成同樣功能 ，再抽一些較有代表性例子用作doctest :</p>
-
-<pre><code class="python">import re
-
-def isYouTubeURL(youtube_url):
-    """return the video Id of any valid Youtube Url as string
-
-    &gt;&gt;&gt; isYouTubeURL("https://www.youtube.com/watch?v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("https://www.youtube.com/watch?feature=youtu.be&amp;v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("http://www.youtube.com/watch?v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("www.youtube.com/watch?v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("youtube.com/watch?v=T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("https://youtu.be/T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("http://youtu.be/T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("youtu.be/T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("www.youtube.com/embed/T2UW7VawmGI")
-    'T2UW7VawmGI'
-    &gt;&gt;&gt; isYouTubeURL("")
-    &gt;&gt;&gt; isYouTubeURL("http://www.geekblog.tk/?v=T2UW7VawmGI")
-    """
-    youtube_regex = r"^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&amp;v=))(?P&lt;YouTubeID&gt;(\w|-){11})(?:\S+)?$"
-    sreMatch = re.match(youtube_regex, youtube_url)
-    return sreMatch.group("YouTubeID") if sreMatch else None
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-</code></pre>
-
-<p>假設將以下的Python程式碼儲存成youtube.py，執行 <code>python youtube.py -v</code> 便可以執行doctest了。</p>
 
 		</div>
     	</div>
@@ -305,7 +271,7 @@ docker rm $(docker ps -a -q)
     </div>
 
     <div class="footer-bottom">
-      <i class="fa fa-copyright"></i> &copy; 2017 Nick Shek&#039;s Blog
+      <i class="fa fa-copyright"></i> &copy; 2018 Nick Shek&#039;s Blog
           </div>
   </footer>
   <!-- Bootstrap core JavaScript

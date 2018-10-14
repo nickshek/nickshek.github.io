@@ -3,13 +3,13 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/Ansible.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-11-20T02:23:26+08:00</updated>
+    <updated>2018-10-14T09:23:45+00:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[用ansible去傳送電子郵件]]></title>
             <link href="/b/用ansible去傳送電子郵件/"/>
-            <updated>2017-01-26T00:00:00+08:00</updated>
+            <updated>2017-01-26T00:00:00+00:00</updated>
             <id>/b/用ansible去傳送電子郵件/</id>
             <content type="html"><![CDATA[<p>
 Ansible在前幾年是一個非常熱門的開源項目，以我理解ansible其中一個功能是可用來部署應用程式，但是我個人覺得部署應用程式暫時有 capistrano或deployer-php也非常足夠，同時部署應用程式於多個伺服器也勝任有餘，總比手動部署來得有效率。</p>

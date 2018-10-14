@@ -3,13 +3,13 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/Latex.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-11-20T02:23:26+08:00</updated>
+    <updated>2018-10-14T09:23:45+00:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[學習Latex]]></title>
             <link href="/b/學習Latex/"/>
-            <updated>2017-02-06T00:00:00+08:00</updated>
+            <updated>2017-02-06T00:00:00+00:00</updated>
             <id>/b/學習Latex/</id>
             <content type="html"><![CDATA[<p>近期對Latex相當有興趣， 之前曾經稍為在Wiki了解過Latex，覺得Symbol好像看起來好像好複雜，所以便提不起興趣學了。
 直至近期發現好多整齊漂亮的pdf文件原來都是由Latex的編譯器建立，便開始想了解一下，當學習一個全新的markup language。

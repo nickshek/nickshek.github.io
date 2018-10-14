@@ -3,13 +3,13 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/ubuntu.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-11-20T02:23:26+08:00</updated>
+    <updated>2018-10-14T09:23:45+00:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[在ubuntu移除圖片的metadata]]></title>
             <link href="/b/在ubuntu移除圖片的metadata/"/>
-            <updated>2014-12-07T00:00:00+08:00</updated>
+            <updated>2014-12-07T00:00:00+00:00</updated>
             <id>/b/在ubuntu移除圖片的metadata/</id>
             <content type="html"><![CDATA[<p>1.安裝exiftool:</p>
 

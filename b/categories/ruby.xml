@@ -3,13 +3,13 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/ruby.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-11-20T02:23:26+08:00</updated>
+    <updated>2018-10-14T09:23:45+00:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[從http://fontello.com/下載font icon,及使用Nokogiri製作一張font icon class 的名單]]></title>
             <link href="/b/從fontello下載font icon,及使用Nokogiri製作一張font icon class 的名單/"/>
-            <updated>2015-01-20T00:00:00+08:00</updated>
+            <updated>2015-01-20T00:00:00+00:00</updated>
             <id>/b/從fontello下載font icon,及使用Nokogiri製作一張font icon class 的名單/</id>
             <content type="html"><![CDATA[<p>從<a href="http://fontello.com/">http://fontello.com/</a>下載font icon，zip檔入面有demo.html，列出如何使用fontello icon ，我的目的是利Nokogiri在rake task以ruby list 形式列印出所有class name，以下是該rake task的程式碼 :</p>
 

@@ -125,6 +125,69 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/利用regular expression判斷URL是否為YouTube URL，且return youtube video ID/">利用regular expression判斷URL是否為YouTube URL，且return youtube video ID</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-30</span></div>
+		<div class="blog-post-text">
+        <p>在以下的Stack Overflow網址，有人寫了一句相當強大的regular expression來完成該使命</p>
+
+<p>stackoverflow : <a href="http://stackoverflow.com/questions/2964678/jquery-youtube-url-validation-with-regex/10315969#10315969">jQuery Youtube URL Validation with regex</a></p>
+
+<pre><code class="javascript">/**
+ * JavaScript function to match (and return) the video Id
+ * of any valid Youtube Url, given as input string.
+ * @author: Stephan Schmitz eyecatchup@gmail.com
+ * @url: http://stackoverflow.com/a/10315969/624466
+ */
+function ytVidId(url) {
+  var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&amp;v=))((\w|-){11})(?:\S+)?$/;
+  return (url.match(p)) ? RegExp.$1 : false;
+}
+</code></pre>
+
+<p>以下的程式碼用Python完成同樣功能 ，再抽一些較有代表性例子用作doctest :</p>
+
+<pre><code class="python">import re
+
+def isYouTubeURL(youtube_url):
+    """return the video Id of any valid Youtube Url as string
+
+    &gt;&gt;&gt; isYouTubeURL("https://www.youtube.com/watch?v=T2UW7VawmGI")
+    'T2UW7VawmGI'
+    &gt;&gt;&gt; isYouTubeURL("https://www.youtube.com/watch?feature=youtu.be&amp;v=T2UW7VawmGI")
+    'T2UW7VawmGI'
+    &gt;&gt;&gt; isYouTubeURL("http://www.youtube.com/watch?v=T2UW7VawmGI")
+    'T2UW7VawmGI'
+    &gt;&gt;&gt; isYouTubeURL("www.youtube.com/watch?v=T2UW7VawmGI")
+    'T2UW7VawmGI'
+    &gt;&gt;&gt; isYouTubeURL("youtube.com/watch?v=T2UW7VawmGI")
+    'T2UW7VawmGI'
+    &gt;&gt;&gt; isYouTubeURL("https://youtu.be/T2UW7VawmGI")
+    'T2UW7VawmGI'
+    &gt;&gt;&gt; isYouTubeURL("http://youtu.be/T2UW7VawmGI")
+    'T2UW7VawmGI'
+    &gt;&gt;&gt; isYouTubeURL("youtu.be/T2UW7VawmGI")
+    'T2UW7VawmGI'
+    &gt;&gt;&gt; isYouTubeURL("www.youtube.com/embed/T2UW7VawmGI")
+    'T2UW7VawmGI'
+    &gt;&gt;&gt; isYouTubeURL("")
+    &gt;&gt;&gt; isYouTubeURL("http://www.geekblog.tk/?v=T2UW7VawmGI")
+    """
+    youtube_regex = r"^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&amp;v=))(?P&lt;YouTubeID&gt;(\w|-){11})(?:\S+)?$"
+    sreMatch = re.match(youtube_regex, youtube_url)
+    return sreMatch.group("YouTubeID") if sreMatch else None
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+</code></pre>
+
+<p>假設將以下的Python程式碼儲存成youtube.py，執行 <code>python youtube.py -v</code> 便可以執行doctest了。</p>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/Friendly ID中文問題/">Friendly ID中文問題</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-20</span></div>
 		<div class="blog-post-text">
@@ -198,45 +261,6 @@ git init --bare
 <p>最后，輸入我們最熟悉的git指令</p>
 
 <pre><code class="bash">git push origin master
-</code></pre>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/令你的youtube embed code變為responsive/">令你的youtube embed code變為responsive</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-10</span></div>
-		<div class="blog-post-text">
-        <p>把youtube的Embed HTML由</p>
-
-<pre><code class="html">&lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
-</code></pre>
-
-<p>改成</p>
-
-<pre><code class="html">&lt;div class="video-container"&gt;
-  &lt;iframe src="//www.youtube.com/embed/AsHKOH03mxw" frameborder="0" height="315" width="560"&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>之後加入以下CSS</p>
-
-<pre><code class="css">.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
-}
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 </code></pre>
 
 		</div>
@@ -323,7 +347,7 @@ docker rm $(docker ps -a -q)
     </div>
 
     <div class="footer-bottom">
-      <i class="fa fa-copyright"></i> &copy; 2017 Nick Shek&#039;s Blog
+      <i class="fa fa-copyright"></i> &copy; 2018 Nick Shek&#039;s Blog
           </div>
   </footer>
   <!-- Bootstrap core JavaScript

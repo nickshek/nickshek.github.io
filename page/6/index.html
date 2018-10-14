@@ -125,6 +125,43 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/如何令你使用SSH時更安全/">如何令你使用SSH時更安全?</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-03-02</span></div>
+		<div class="blog-post-text">
+        <p>要令SSH登入更安全，最簡單的方法是取消密碼登入。而使用公開金鑰。</p>
+
+<p>在Client輸入</p>
+
+<pre><code class="bash">ssh-keygen -t rsa
+</code></pre>
+
+<p>建議輸入passphrase。之後輸入</p>
+
+<pre><code class="bash">chmod 700 ~/.ssh
+</code></pre>
+
+<p>之後將產生的Public Key (e.g id_rsa.pub) 複製至SSH Server。</p>
+
+<p>登入SSH Server，將Public Key的內容加至 .ssh/authorized_keys:</p>
+
+<pre><code class="bash">cat .ssh/id_rsa.pub &gt;&gt; .ssh/authorized_keys
+</code></pre>
+
+<p>之後開啟另一個Terminal 測試SSH登入是否只需要輸入passphrase來找替原本的使用者密碼</p>
+
+<p>之後輸入<code>sudo vim /etc/ssh/sshd_config</code></p>
+
+<p>將 Port 22 修改為其他Port，使用ssh 時用-p 選項指定PORT Number</p>
+
+<p>將<code>#PasswordAuthentication yes</code> 改為<code>PasswordAuthentication no</code></p>
+
+<p>重啟SSH Service就完成了</p>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/更新git branch所有舊有的電子郵件地址/">更新git branch所有舊有的電子郵件地址</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-02-24</span></div>
 		<div class="blog-post-text">
@@ -163,24 +200,6 @@ gem uninstall rubygems-bundler open_gem
 
 # try to install one more time
 bundle install
-</code></pre>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/debug/">debug.py =&gt; IndexError: list index out of range</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-01-22</span></div>
-		<div class="blog-post-text">
-        <p>若該錯誤來自Django項目的debug.py，解決方法是修改_get_lines_from_file方法，把以下這一行:</p>
-
-<pre><code class="python">source = f.readlines()
-</code></pre>
-
-<p>改為</p>
-
-<pre><code class="python">source = f.read().splitlines()
 </code></pre>
 
 		</div>
@@ -267,7 +286,7 @@ docker rm $(docker ps -a -q)
     </div>
 
     <div class="footer-bottom">
-      <i class="fa fa-copyright"></i> &copy; 2017 Nick Shek&#039;s Blog
+      <i class="fa fa-copyright"></i> &copy; 2018 Nick Shek&#039;s Blog
           </div>
   </footer>
   <!-- Bootstrap core JavaScript

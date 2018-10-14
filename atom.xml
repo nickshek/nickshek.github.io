@@ -3,13 +3,39 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/atom.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-11-20T02:23:26+08:00</updated>
+    <updated>2018-10-14T09:23:45+00:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
+            <title type="html"><![CDATA[在Cento 7下使用Cisco AnyConnect Secure Mobility Client]]></title>
+            <link href="/b/在Cento 7下使用Cisco AnyConnect Secure Mobility Client/"/>
+            <updated>2018-10-14T00:00:00+00:00</updated>
+            <id>/b/在Cento 7下使用Cisco AnyConnect Secure Mobility Client/</id>
+            <content type="html"><![CDATA[<p>若你只有windows 或 mac os 版本的Cisco AnyConnect Secure Mobility Client，而想在Centos 下使用和Cisco AnyConnect Secure Mobility Client功能相同的軟件，
+可以考慮安裝openconnet</p>
+
+<pre><code class="bash">sudo yum install openconnect
+</code></pre>
+
+<p>使用方式:</p>
+
+<pre><code class="bash">sudo openconnect &lt;vpn ip&gt;
+</code></pre>
+
+<p>輸入username + password即可</p>
+
+<p>留意到resolv.conf 更新了</p>
+
+<pre><code class="bash">sudo cat /etc/resolv.conf
+</code></pre>
+
+<p>按ctrl + c 即可斷開VPN連接</p>
+]]></content>
+        </entry>
+            <entry>
             <title type="html"><![CDATA[差不多半年沒有更新blog了]]></title>
             <link href="/b/差不多半年沒有更新blog了/"/>
-            <updated>2017-09-24T00:00:00+08:00</updated>
+            <updated>2017-09-24T00:00:00+00:00</updated>
             <id>/b/差不多半年沒有更新blog了/</id>
             <content type="html"><![CDATA[<p>這半年都沒有把自己遇到的IT問題更新在這個blog呢，看來還是需要加把勁更新一下個blog呢。不進則退。</p>
 
@@ -19,7 +45,7 @@
             <entry>
             <title type="html"><![CDATA[學習Latex]]></title>
             <link href="/b/學習Latex/"/>
-            <updated>2017-02-06T00:00:00+08:00</updated>
+            <updated>2017-02-06T00:00:00+00:00</updated>
             <id>/b/學習Latex/</id>
             <content type="html"><![CDATA[<p>近期對Latex相當有興趣， 之前曾經稍為在Wiki了解過Latex，覺得Symbol好像看起來好像好複雜，所以便提不起興趣學了。
 直至近期發現好多整齊漂亮的pdf文件原來都是由Latex的編譯器建立，便開始想了解一下，當學習一個全新的markup language。
@@ -104,7 +130,7 @@
             <entry>
             <title type="html"><![CDATA[用ansible去傳送電子郵件]]></title>
             <link href="/b/用ansible去傳送電子郵件/"/>
-            <updated>2017-01-26T00:00:00+08:00</updated>
+            <updated>2017-01-26T00:00:00+00:00</updated>
             <id>/b/用ansible去傳送電子郵件/</id>
             <content type="html"><![CDATA[<p>
 Ansible在前幾年是一個非常熱門的開源項目，以我理解ansible其中一個功能是可用來部署應用程式，但是我個人覺得部署應用程式暫時有 capistrano或deployer-php也非常足夠，同時部署應用程式於多個伺服器也勝任有餘，總比手動部署來得有效率。</p>
@@ -238,7 +264,7 @@ localhost ansible_connection=local
             <entry>
             <title type="html"><![CDATA[移除及暫停所有Docker container 指令]]></title>
             <link href="/b/移除及暫停所有Docker container 指令/"/>
-            <updated>2017-01-12T00:00:00+08:00</updated>
+            <updated>2017-01-12T00:00:00+00:00</updated>
             <id>/b/移除及暫停所有Docker container 指令/</id>
             <content type="html"><![CDATA[<p>怕自己忘記了，放上這個blog。這個指令在開發Docker Image 時還是經常使用的。</p>
 
@@ -250,7 +276,7 @@ docker rm $(docker ps -a -q)
             <entry>
             <title type="html"><![CDATA[思考在linux一次性重新命名多個file的問題]]></title>
             <link href="/b/ 思考在linux一次性重新命名多個file的問題/"/>
-            <updated>2016-10-01T00:00:00+08:00</updated>
+            <updated>2016-10-01T00:00:00+00:00</updated>
             <id>/b/ 思考在linux一次性重新命名多個file的問題/</id>
             <content type="html"><![CDATA[<p>作為一個偏好使用Linux平台的Developer， 或會經常遇到一次性命名多個File的問題。
 如果File數目不算多的話，還可以透過mv command 一一執行。
@@ -310,7 +336,7 @@ drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
             <entry>
             <title type="html"><![CDATA[執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;]]></title>
             <link href="/b/執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;/"/>
-            <updated>2016-07-10T00:00:00+08:00</updated>
+            <updated>2016-07-10T00:00:00+00:00</updated>
             <id>/b/執行Laravel PHPUnit 時出現&quot;Maximum function nesting level of &#039;100&#039; reached, aborting!&quot;/</id>
             <content type="html"><![CDATA[<p>執行Laravel Project的PHPUnit 若出現</p>
 
@@ -333,7 +359,7 @@ drwxr-xr-x 103 shek shek 4096 Oct  1 01:30 ..
             <entry>
             <title type="html"><![CDATA[docker build image 時出現 no space left on device]]></title>
             <link href="/b/docker build image 時出現 no space left on device/"/>
-            <updated>2016-07-09T00:00:00+08:00</updated>
+            <updated>2016-07-09T00:00:00+00:00</updated>
             <id>/b/docker build image 時出現 no space left on device/</id>
             <content type="html"><![CDATA[<p>若發現明明電腦有好多空間，但是運行docker build時仍出現 no space left on device。則可以先運行docker info，若確認出現
 Storage Driver: devicemapper                              ，則表示你的image 過了Base Device Size                  。
@@ -362,7 +388,7 @@ service docker start
             <entry>
             <title type="html"><![CDATA[安裝Ubuntu Server至舊Notebook注意事項]]></title>
             <link href="/b/安裝Ubuntu Server至舊Notebook注意事項/"/>
-            <updated>2016-06-28T00:00:00+08:00</updated>
+            <updated>2016-06-28T00:00:00+00:00</updated>
             <id>/b/安裝Ubuntu Server至舊Notebook注意事項/</id>
             <content type="html"><![CDATA[<p>若家中有Notebook 不再使用，用來安裝Ubuntu Server 是一個好主意。Ubuntu Server 的下載連結如下:</p>
 
@@ -382,7 +408,7 @@ service docker start
             <entry>
             <title type="html"><![CDATA[使用sftp時出現&quot;connection reset by peer connection closed&quot;]]></title>
             <link href="/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;/"/>
-            <updated>2016-06-24T00:00:00+08:00</updated>
+            <updated>2016-06-24T00:00:00+00:00</updated>
             <id>/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;/</id>
             <content type="html"><![CDATA[<p>若新加的sftp帳戶發現，出現connection reset by peer connection closed的錯誤訊息，應該先用cat 查看/etc/rsyslog.conf了解找出出現
 auth,authpriv.*　的行數，便清楚需要查看那個log file以獲取進一步的資訊。若系統是Centos，多數是查看/var/log/secure，ubuntu 則查看
@@ -396,35 +422,6 @@ auth,authpriv.*　的行數，便清楚需要查看那個log file以獲取進一
 <p>解決方法是確保chroot的路徑的所有資料夾都是由root 擁有及所有path都是安全的。若有任何一個資料夾的權限是777，應該把資料夾改為775或755。</p>
 
 <p>參考 : <a href="https://wiki.archlinux.org/index.php/SFTP_chroot">https://wiki.archlinux.org/index.php/SFTP_chroot</a></p>
-]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[使用Apache設定Alias時出現403 Foridden]]></title>
-            <link href="/b/使用Apache設定Alias時出現403 Foridden/"/>
-            <updated>2016-04-16T00:00:00+08:00</updated>
-            <id>/b/使用Apache設定Alias時出現403 Foridden/</id>
-            <content type="html"><![CDATA[<p>這個錯誤其實是好常見的 ，如果在apache 看見 access denied because search permissions are missing on a component of the path ，
-即表示<strong>根目錄至Alias 的目標資料夾</strong>中任意一個資料夾沒有execute permission!例如:</p>
-
-<p>如果你alias的目標資夾是 <code>/usr/local/apache2/htdocs/foo</code> ，請確保以下資料夾有execute permission</p>
-
-<p>/
-/usr/
-/usr/local/
-/usr/local/apache2/
-/usr/local/apache2/htdocs/
-/usr/local/apache2/htdocs/foo/</p>
-
-<p>owner 無須設定是apache user
-因此，解決方法如下</p>
-
-<pre><code>cd /usr/local/apache2/htdocs/foo
-
-ls -la
-chmod +x .
-cd ..
-# 重覆直至去到 /
-</code></pre>
 ]]></content>
         </entry>
     </feed>

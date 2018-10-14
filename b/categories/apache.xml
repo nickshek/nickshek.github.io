@@ -3,13 +3,13 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/apache.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-11-20T02:23:26+08:00</updated>
+    <updated>2018-10-14T09:23:45+00:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[使用Apache設定Alias時出現403 Foridden]]></title>
             <link href="/b/使用Apache設定Alias時出現403 Foridden/"/>
-            <updated>2016-04-16T00:00:00+08:00</updated>
+            <updated>2016-04-16T00:00:00+00:00</updated>
             <id>/b/使用Apache設定Alias時出現403 Foridden/</id>
             <content type="html"><![CDATA[<p>這個錯誤其實是好常見的 ，如果在apache 看見 access denied because search permissions are missing on a component of the path ，
 即表示<strong>根目錄至Alias 的目標資料夾</strong>中任意一個資料夾沒有execute permission!例如:</p>
@@ -38,7 +38,7 @@ cd ..
             <entry>
             <title type="html"><![CDATA[使用ubuntu在localhost建立subdomain]]></title>
             <link href="/b/使用ubuntu在localhost建立subdomain/"/>
-            <updated>2014-11-13T00:00:00+08:00</updated>
+            <updated>2014-11-13T00:00:00+00:00</updated>
             <id>/b/使用ubuntu在localhost建立subdomain/</id>
             <content type="html"><![CDATA[<p>有好多時候，我們需要在localhost測試多個project無論是(php,Ruby,Python的項目)。在localhost建立subdomain可以讓我們在同一主機測試不同項目:</p>
 

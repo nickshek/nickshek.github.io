@@ -3,13 +3,13 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/b/categories/Linux.xml" rel="self"/>
     <link href="/"/>
-    <updated>2017-11-20T02:23:26+08:00</updated>
+    <updated>2018-10-14T09:23:45+00:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[思考在linux一次性重新命名多個file的問題]]></title>
             <link href="/b/ 思考在linux一次性重新命名多個file的問題/"/>
-            <updated>2016-10-01T00:00:00+08:00</updated>
+            <updated>2016-10-01T00:00:00+00:00</updated>
             <id>/b/ 思考在linux一次性重新命名多個file的問題/</id>
             <content type="html"><![CDATA[<p>作為一個偏好使用Linux平台的Developer， 或會經常遇到一次性命名多個File的問題。
 如果File數目不算多的話，還可以透過mv command 一一執行。
