@@ -125,6 +125,35 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/TypeError: deepestAncestor is undefined/">TypeError: deepestAncestor is undefined</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-01-18</span></div>
+		<div class="blog-post-text">
+        <p>使用react.js遇到一個奇怪的問題 : TypeError: deepestAncestor is undefined</p>
+
+<p>但是當按F5問題又消失了，去其他頁面有時會有這個問題。</p>
+
+<p>根據 <a href="http://stackoverflow.com/questions/27153166/typeerror-when-using-react-cannot-read-property-firstchild-of-undefined">http://stackoverflow.com/questions/27153166/typeerror-when-using-react-cannot-read-property-firstchild-of-undefined</a></p>
+
+<p>可能係turbolink關係，載入了二個不同版本的react。</p>
+
+<p>我的暫時解決方法是在rails內的application.js暫時不用turbolink。將</p>
+
+<pre><code class="ruby">//= require turbolinks
+//= require react
+//= require react_ujs
+</code></pre>
+
+<p>變為</p>
+
+<pre><code class="ruby">//= require react
+//= require react_ujs
+</code></pre>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/redis在socket/">redis在socket.io接收多次重覆信息問題</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-01-17</span></div>
 		<div class="blog-post-text">
@@ -174,18 +203,6 @@ io.on('connection', function(socket){
 </code></pre>
 
 <p>再執行<code>npm update --save</code></p>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/在Linux terminal列輸出己整理的JSON/">在Linux terminal列輸出己整理的JSON</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-01-11</span></div>
-		<div class="blog-post-text">
-        <p>在terminal 輸入 <code>curl http://it-ebooks-api.info/v1/search/python</code> ，輸出是一堆壓縮了的JSON。</p>
-
-<p>只要輸入 <code>curl http://it-ebooks-api.info/v1/search/python | python -mjson.tool</code> ，便能輸出整理好的JSON了。</p>
 
 		</div>
     	</div>

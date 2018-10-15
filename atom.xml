@@ -3,9 +3,35 @@
     <title><![CDATA[Nick Shek&#039;s Blog]]></title>
     <link href="/atom.xml" rel="self"/>
     <link href="/"/>
-    <updated>2018-10-14T09:23:45+00:00</updated>
+    <updated>2018-10-15T14:56:27+00:00</updated>
     <id>/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[在Centos7下安裝Chrome]]></title>
+            <link href="/b/在Centos7下安裝Chrome/"/>
+            <updated>2018-10-15T00:00:00+00:00</updated>
+            <id>/b/在Centos7下安裝Chrome/</id>
+            <content type="html"><![CDATA[<p>輸入以下指令</p>
+
+<pre><code class="bash">vi  /etc/yum.repos.d/google.repo
+</code></pre>
+
+<p>貼上以下內容</p>
+
+<pre><code class="bash">[google64]
+name=Google - x86_64
+baseurl=http://dl.google.com/linux/rpm/stable/x86_64
+enabled=1
+gpgcheck=1
+gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
+</code></pre>
+
+<p>之後再輸入</p>
+
+<pre><code class="bash">sudo yum install -y google-chrome-stable
+</code></pre>
+]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[在Cento 7下使用Cisco AnyConnect Secure Mobility Client]]></title>
             <link href="/b/在Cento 7下使用Cisco AnyConnect Secure Mobility Client/"/>
@@ -403,25 +429,6 @@ service docker start
 <p>安裝後，為了避免開機後合上Notebook後會進入睡眠狀態，可以修改<code>/etc/systemd/logind.conf</code>
 加入<code>HandleLidSwitch=ignore</code> 。
 最後執行<code>sudo service restart systemd-logind</code></p>
-]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[使用sftp時出現&quot;connection reset by peer connection closed&quot;]]></title>
-            <link href="/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;/"/>
-            <updated>2016-06-24T00:00:00+00:00</updated>
-            <id>/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;/</id>
-            <content type="html"><![CDATA[<p>若新加的sftp帳戶發現，出現connection reset by peer connection closed的錯誤訊息，應該先用cat 查看/etc/rsyslog.conf了解找出出現
-auth,authpriv.*　的行數，便清楚需要查看那個log file以獲取進一步的資訊。若系統是Centos，多數是查看/var/log/secure，ubuntu 則查看
-/var/log/auth.log。</p>
-
-<p>以下頁面清楚說明如何fix SFTP的問題，我遇到的情況是</p>
-
-<pre><code>sshd[12399]: fatal: bad ownership or modes for chroot directory component "/path/of/chroot/directory/"
-</code></pre>
-
-<p>解決方法是確保chroot的路徑的所有資料夾都是由root 擁有及所有path都是安全的。若有任何一個資料夾的權限是777，應該把資料夾改為775或755。</p>
-
-<p>參考 : <a href="https://wiki.archlinux.org/index.php/SFTP_chroot">https://wiki.archlinux.org/index.php/SFTP_chroot</a></p>
 ]]></content>
         </entry>
     </feed>

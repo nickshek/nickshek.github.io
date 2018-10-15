@@ -125,6 +125,28 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/安裝Ubuntu Server至舊Notebook注意事項/">安裝Ubuntu Server至舊Notebook注意事項</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2016-06-28</span></div>
+		<div class="blog-post-text">
+        <p>若家中有Notebook 不再使用，用來安裝Ubuntu Server 是一個好主意。Ubuntu Server 的下載連結如下:</p>
+
+<p><a href="http://www.ubuntu.com/download/server">http://www.ubuntu.com/download/server</a></p>
+
+<p>下載完iso 後便可以參考以下連結去建立USB安裝碟</p>
+
+<p>Windows: <a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows">http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows</a></p>
+
+<p>Ubuntu: <a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-ubuntu">http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-ubuntu</a></p>
+
+<p>安裝後，為了避免開機後合上Notebook後會進入睡眠狀態，可以修改<code>/etc/systemd/logind.conf</code>
+加入<code>HandleLidSwitch=ignore</code> 。
+最後執行<code>sudo service restart systemd-logind</code></p>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/使用sftp時出現&quot;connection reset by peer connection closed&quot;/">使用sftp時出現&quot;connection reset by peer connection closed&quot;</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2016-06-24</span></div>
 		<div class="blog-post-text">
@@ -170,25 +192,6 @@ ls -la
 chmod +x .
 cd ..
 # 重覆直至去到 /
-</code></pre>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/Failed to listen on localhost:8000 (reason: Address already in use)/">Failed to listen on localhost:8000 (reason: Address already in use)</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-11-15</span></div>
-		<div class="blog-post-text">
-        <p>若使用 <code>php -S localhost:8000</code>來進行development時，沒有使用control +C 結束程序，便會發生該問題，因此可以建立以下bashscript結束名為"php"的proceses</p>
-
-<pre><code class="bash">#!/bin/bash
-pid=$(ps -fe | grep '[p]hp' | awk '{print $2}')
-if [[ -n $pid ]]; then
-    kill $pid
-else
-    echo "Does not exist"
-fi
 </code></pre>
 
 		</div>

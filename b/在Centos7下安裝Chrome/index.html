@@ -2,10 +2,11 @@
 <html>
 
 <head>
-  <title>Home &mdash; Nick Shek&#039;s Blog</title>
+  <title>在Centos7下安裝Chrome &mdash; Nick Shek&#039;s Blog</title>
   <meta charset="utf-8">
   <meta name="theme-color" content="#ffffff">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">   <meta name="robots" content="noindex, follow"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">     <meta name="robots" content="index, follow">
+
   <!-- Bootstrap core CSS -->
   <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -104,7 +105,7 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/">首頁</a></li>
+					<li><a href="/">首頁</a></li>
           <li><a href="/b">所有文章</a></li>
           <li><a href="/doc/">Today I learned</a></li>
 				</ul>
@@ -125,110 +126,61 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
-		<h2><a href="/b/Failed to listen on localhost:8000 (reason: Address already in use)/">Failed to listen on localhost:8000 (reason: Address already in use)</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-11-15</span></div>
+		<h2><a href="#">在Centos7下安裝Chrome</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2018-10-15</span></div>
 		<div class="blog-post-text">
-        <p>若使用 <code>php -S localhost:8000</code>來進行development時，沒有使用control +C 結束程序，便會發生該問題，因此可以建立以下bashscript結束名為"php"的proceses</p>
+        <p>輸入以下指令</p>
 
-<pre><code class="bash">#!/bin/bash
-pid=$(ps -fe | grep '[p]hp' | awk '{print $2}')
-if [[ -n $pid ]]; then
-    kill $pid
-else
-    echo "Does not exist"
-fi
+<pre><code class="bash">vi  /etc/yum.repos.d/google.repo
+</code></pre>
+
+<p>貼上以下內容</p>
+
+<pre><code class="bash">[google64]
+name=Google - x86_64
+baseurl=http://dl.google.com/linux/rpm/stable/x86_64
+enabled=1
+gpgcheck=1
+gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
+</code></pre>
+
+<p>之後再輸入</p>
+
+<pre><code class="bash">sudo yum install -y google-chrome-stable
 </code></pre>
 
 		</div>
-    	</div>
+	</div>
 </article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/Socket.io 1.3/">Socket.io 1.3.5 cdn 同源問題</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-04-15</span></div>
-		<div class="blog-post-text">
-        <p>假設己經有一個HTTPS加密網站，為了令網站更快速。因此Socket.io使用了以下的javascript cdn :</p>
+            <nav class="article">
+            <ul>
+                                                    <li>上一篇: <a class="previous" href="/b/在Cento 7下使用Cisco AnyConnect Secure Mobility Client/" title="在Cento 7下使用Cisco AnyConnect Secure Mobility Client"><span class="title">在Cento 7下使用Cisco AnyConnect Secure Mobility Client</span></a></li>
+                            </ul>
+        </nav>
+    
+        
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+         */
+        /*
+        var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() {  // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
 
-<pre><code class="html">&lt;script src="https://cdn.socket.io/socket.io-1.3.4.js"&gt;&lt;/script&gt;
-</code></pre>
+            s.src = '//nicksheksblog.disqus.com/embed.js';
 
-<p>但是socket.io server 會在 polling的請求回覆400 Bad request</p>
-
-<p>解決方法是從Socket.io依賴的原始碼找出return Access-Control-Allow-Origin Header的地方,根據socket.io v1.3.5 的源始碼,return Access-Control-Allow-Origin Header的地方位於node_modules/socket.io/node_modules/engine.io/lib/transports/polling-xhr.js</p>
-
-<pre><code class="javascript">/**
- * Returns headers for a response.
- *
- * @param {http.ServerRequest} request
- * @param {Object} extra headers
- * @api private
- */
-
-XHR.prototype.headers = function(req, headers){
-  headers = headers || {};
-
-  if (req.headers.origin) {
-    headers['Access-Control-Allow-Credentials'] = 'true';
-    headers['Access-Control-Allow-Origin'] = req.headers.origin;
-  } else {
-    headers['Access-Control-Allow-Origin'] = '*';
-  }
-
-  this.emit('headers', headers);
-  return headers;
-};
-</code></pre>
-
-<p>將該function 改成</p>
-
-<pre><code class="javascript">/**
- * Returns headers for a response.
- *
- * @param {http.ServerRequest} request
- * @param {Object} extra headers
- * @api private
- */
-
-XHR.prototype.headers = function(req, headers){
-  headers = headers || {};
-
-  if (req.headers.origin) {
-    headers['Access-Control-Allow-Credentials'] = 'true';
-    if(req.headers.origin == "https://www.example-domain.com/"){
-        headers['Access-Control-Allow-Origin'] = "https://cdn.socket.io/";
-    }else{
-        headers['Access-Control-Allow-Origin'] = req.headers.origin;
-    }
-  } else {
-    headers['Access-Control-Allow-Origin'] = '*';
-  }
-
-  this.emit('headers', headers);
-  return headers;
-};
-</code></pre>
-
-<p>或者直接新增　<code>headers['Access-Control-Allow-Origin'] = "https://cdn.socket.io/";</code>　雖然修改方法很醜。但至少可以令網站使用Socket.io CDN</p>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/如何令git repo 連接己經存在的heroku app/">如何令git repo 連接己經存在的heroku app?</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2015-04-05</span></div>
-		<div class="blog-post-text">
-        <p>假設你己經在<a href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a>下載了heroku 工具程式.若想把原本的應用程式連接至heroku只需要在程式的根目錄輸入<code>heroku create</code>,但是這樣會建立了一個全新的heroku程式。</p>
-
-<p>若我在heroku己經有一個應用程式為 project , 我想將原本的git 連接至 project 而不是重新建立一個新的應用程式,只需要在程式的根目錄輸入 <code>heroku git:remote -a project</code></p>
-
-		</div>
-    	</div>
-</article>
-    <nav class="page">
-        <a href="/page/4">更新的文章</a><br />
-        <a href="/page/6">更舊的文章</a><br />
-    </nav>
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   				</div>
   				<div class="col-md-4 sidebar-gutter">
   					<aside>
@@ -339,6 +291,7 @@ docker rm $(docker ps -a -q)
     hljs.initHighlightingOnLoad();
   </script>
 
-   </body>
+  <script id="dsq-count-scr" src="//nicksheksblog.disqus.com/count.js" async></script>
+</body>
 
 </html>

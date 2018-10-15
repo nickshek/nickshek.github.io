@@ -125,6 +125,31 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/在ubuntu移除圖片的metadata/">在ubuntu移除圖片的metadata</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-07</span></div>
+		<div class="blog-post-text">
+        <p>1.安裝exiftool:</p>
+
+<pre><code class="bash">sudo apt-get install libimage-exiftool-perl
+</code></pre>
+
+<p>2.讀取圖片資訊</p>
+
+<pre><code class="bash">exiftool example.jpg
+</code></pre>
+
+<p>3.移除圖片資訊</p>
+
+<pre><code class="bash">exiftool -all= example.jpg
+</code></pre>
+
+<p>4.原本的圖片會保留成example.jpg_original</p>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/在rails migration改變column type/">在rails migration改變column type</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-11-26</span></div>
 		<div class="blog-post-text">

@@ -125,6 +125,62 @@
   				<div class="col-md-8">
   					<article class="blog-post">
   	<div class="blog-post-body">
+		<h2><a href="/b/把現有的project folder變為git repository/">把現有的project folder變為git repository</a></h2>
+		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-15</span></div>
+		<div class="blog-post-text">
+        <p>首先，在localhost建立一個假project</p>
+
+<pre><code class="bash">cd ~/
+mkdir project1
+cd project1/
+echo "HelloWorld!" &gt;&gt; test.txt
+</code></pre>
+
+<p>驗證是否確實將Hello World 寫入test.txt</p>
+
+<pre><code class="bash">cat test.txt
+</code></pre>
+
+<p>建立git repository</p>
+
+<pre><code class="bash">git init
+</code></pre>
+
+<p>在remote host 建立bare repository,以下的blog詳細解釋了什麼是bare git repository</p>
+
+<p><a href="http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/">http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/</a></p>
+
+<pre><code class="bash">cd ~/
+mkdir project1.git
+cd project1.git/
+git init --bare
+</code></pre>
+
+<p>在localhost,</p>
+
+<pre><code class="bash">cd ~/project1
+</code></pre>
+
+<p>新增remote origin url</p>
+
+<pre><code class="bash">git remote add origin ssh://&lt;username&gt;@&lt;ip address&gt;/&lt;path to bare repo&gt;/project1.git
+</code></pre>
+
+<p>萬一新增的url 有錯，可以透過下列指令更新remote origin url</p>
+
+<pre><code class="bash">git remote set-url origin &lt;url&gt;
+</code></pre>
+
+<p>最后，輸入我們最熟悉的git指令</p>
+
+<pre><code class="bash">git push origin master
+</code></pre>
+
+		</div>
+    	</div>
+</article>
+<article class="blog-post">
+  	<div class="blog-post-body">
 		<h2><a href="/b/令你的youtube embed code變為responsive/">令你的youtube embed code變為responsive</a></h2>
 		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-10</span></div>
 		<div class="blog-post-text">
@@ -174,31 +230,6 @@
 <div class="video-container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/AsHKOH03mxw" frameborder="0" allowfullscreen></iframe>
 </div>
-
-		</div>
-    	</div>
-</article>
-<article class="blog-post">
-  	<div class="blog-post-body">
-		<h2><a href="/b/在ubuntu移除圖片的metadata/">在ubuntu移除圖片的metadata</a></h2>
-		<div class="post-meta"><span><i class="fa fa-clock-o"></i>2014-12-07</span></div>
-		<div class="blog-post-text">
-        <p>1.安裝exiftool:</p>
-
-<pre><code class="bash">sudo apt-get install libimage-exiftool-perl
-</code></pre>
-
-<p>2.讀取圖片資訊</p>
-
-<pre><code class="bash">exiftool example.jpg
-</code></pre>
-
-<p>3.移除圖片資訊</p>
-
-<pre><code class="bash">exiftool -all= example.jpg
-</code></pre>
-
-<p>4.原本的圖片會保留成example.jpg_original</p>
 
 		</div>
     	</div>

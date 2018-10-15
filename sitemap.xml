@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc></loc>
-    <lastmod>2018-10-14</lastmod>
+    <lastmod>2018-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>/b/在Centos7下安裝Chrome/</loc>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
     <url>
     <loc>/b/在Cento 7下使用Cisco AnyConnect Secure Mobility Client/</loc>
