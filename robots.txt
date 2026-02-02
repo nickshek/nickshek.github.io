@@ -1,5 +1,4 @@
-User-agent: *
-Disallow: /blog/tags/
-Disallow: /blog/categories/
+User-agent:*
+Disallow:
 
-Sitemap: /sitemap.xml
+Sitemap: https://nickshek.github.io/sitemap.xml

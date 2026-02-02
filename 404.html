@@ -1,238 +1,41 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-HK" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.26" />
+    <meta name="theme" content="VuePress Theme Hope 2.0.0-rc.102" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
 
-<head>
-  <title>Four o four &mdash; Nick Shek&#039;s Blog</title>
-  <meta charset="utf-8">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">   <meta name="robots" content="noindex, follow"> 
-  <!-- Bootstrap core CSS -->
-  <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!-- Custom styles for this template -->
-  <link href="/css/jquery.bxslider.css" rel="stylesheet">
-  <link href="/css/style.css" rel="stylesheet">
+      [data-theme="dark"] {
+        --vp-c-bg: #1b1b1f;
+      }
 
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+      html,
+      body {
+        background: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="apple-touch-icon" sizes="57x57" href="/images/icon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/images/icon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/images/icon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/images/icon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/images/icon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/images/icon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/images/icon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/images/icon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/images/icon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/images/icon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
-  <link rel="manifest" href="/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/images/icon/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
-
-
-  <link rel="stylesheet" href="/components/highlightjs/styles/github.css" />
-  <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Nick Shek&#039;s Blog activity feed" />
-       <style>
-    #disqus_thread{
-      margin-bottom: 60px;
-    }
-
-    nav.article{
-      margin-bottom: 60px;
-    }
-
-    nav.page{
-      margin-bottom: 60px;
-    }
-
-    pre > code{
-      background-color: inherit;
-    }
-
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      padding-top: 30px;
-      height: 0;
-      overflow: hidden;
-    }
-
-    .video-container iframe,
-    .video-container object,
-    .video-container embed {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .aw-current-weather-inner h3{
-      color:white;
-    }
-
-    .aw-current-weather-inner p{
-      color:white;
-    }
-
-    .aw-current-weather-inner b{
-      color:white;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="/">首頁</a></li>
-          <li><a href="/b">所有文章</a></li>
-          <li><a href="/doc/">Today I learned</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://www.github.com/nickshek"><i class="fa fa-github"></i></a></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-	</nav>
-  <div class="container">
-  		<header>
-  			<a href=""><h1>Nick Shek's Blog</h1></a>
-  		</header>
-  		<section>
-  			<div class="row">
-  				<div class="col-md-8">
-  					<h2>Page not found</h2>  				</div>
-  				<div class="col-md-4 sidebar-gutter">
-  					<aside>
-              <!-- sidebar-widget -->
-              <div class="sidebar-widget">
-                <h3 class="sidebar-title">天氣</h3>
-                <div class="widget-container">
-                  <div>
-                    <a href="http://www.accuweather.com/en/hk/hong-kong/1123655/weather-forecast/1123655" class="aw-widget-legal">
-                      <!--
-                  By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
-                  -->
-                    </a>
-                    <div id="awcc1459444431179" class="aw-widget-current" data-locationkey="1123655" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1459444431179"></div>
-                    <script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
-                  </div>
-                </div>
-              </div>
-
-              <!-- sidebar-widget -->
-              <div class="sidebar-widget">
-                <h3 class="sidebar-title">有用連結</h3>
-                <div class="widget-container">
-                  <ul>
-                    <li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a></li>
-                    <li><a href="http://sculpin.io">sculpin.io</a></li>
-                    <li><a href="https://www.bootstrapzero.com/bootstrap-template/renda-theme">Renda Theme</a></li>
-                    <li><a href="https://docs.docker.com/compose/">Docker Compose</a></li>
-                    <li><a href="https://laravel.com/">Laravel</a></li>
-                    <li><a href="http://getbootstrap.com/getting-started/">Getting started &middot; Bootstrap</a></li>
-                    <li><a href="https://github.com/reactjs/react-router">React Router</a></li>
-                  </ul>
-                </div>
-              </div>
-              <!-- sidebar-widget -->
-              <div class="sidebar-widget">
-                <h3 class="sidebar-title">好聽音樂</h3>
-                <div class="widget-container">
-                  <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLIqPX-LFZSzdxlmyK2cHkv3HPRwmzgkRL" frameborder="0" allowfullscreen></iframe>
-                  </div>
-                </div>
-              </div>
-
-              <!-- sidebar-widget -->
-              <div class="sidebar-widget">
-                <h3 class="sidebar-title">實用指令</h3>
-                <div class="widget-container">
-                  <ul>
-                    <li>
-                      暫停所有Docker Container
-<pre>
-docker stop $(docker ps -a -q)
-</pre>
-                    </li>
-                    <li>
-                      移除所有Docker Container
-<pre>
-docker rm $(docker ps -a -q)
-</pre>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-                					</aside>
-  				</div>
-  			</div>
-  		</section>
-  		</div><!-- /.container -->
-  <footer class="footer">
-
-    <div class="footer-socials">
-      <a href="http://www.github.com/nickshek"><i class="fa fa-github"></i></a>
-    </div>
-
-    <div class="footer-bottom">
-      <i class="fa fa-copyright"></i> &copy; 2018 Nick Shek&#039;s Blog
-          </div>
-  </footer>
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="/js/bootstrap.js"></script>
-  <script src="/js/jquery.bxslider.js"></script>
-  <script src="/js/mooz.scripts.min.js"></script>
-
-    
-  <script type="text/javascript">
-    (function(i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function() {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-75881704-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-    <script src="/components/highlightjs/highlight.pack.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad();
-  </script>
-
-   </body>
-
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"","description":"404 Not Found"}</script><meta property="og:url" content="https://nickshek.github.io/404.html"><meta property="og:site_name" content="Nick Shek"><meta property="og:description" content="404 Not Found"><meta property="og:type" content="website"><meta property="og:locale" content="zh-HK"><title>Nick Shek</title><meta name="description" content="404 Not Found">
+    <link rel="preload" href="/assets/style-C8JdiB-1.css" as="style"><link rel="stylesheet" href="/assets/style-C8JdiB-1.css">
+    <link rel="modulepreload" href="/assets/app-B0w5hgOU.js"><link rel="modulepreload" href="/assets/404.html-DeaVXQC3.js">
+    <link rel="prefetch" href="/assets/index.html-CkoQR-tB.js" as="script"><link rel="prefetch" href="/assets/2014-11-13-使用ubuntu在localhost建立subdomain.html-vrYATwAP.js" as="script"><link rel="prefetch" href="/assets/2014-11-26-在rails migration改變column type.html-j6HDFZlI.js" as="script"><link rel="prefetch" href="/assets/2014-12-07-在ubuntu移除圖片的metadata.html-BXv2YKdd.js" as="script"><link rel="prefetch" href="/assets/2014-12-10-HKTV 選戰 插曲.html-C3j_i6Dn.js" as="script"><link rel="prefetch" href="/assets/2014-12-10-令你的youtube embed code變為responsive.html-BaE49B2g.js" as="script"><link rel="prefetch" href="/assets/2014-12-15-把現有的project folder變為git repository.html-DqKlDPYR.js" as="script"><link rel="prefetch" href="/assets/2014-12-20-Friendly ID中文問題.html-YBL4mUnE.js" as="script"><link rel="prefetch" href="/assets/2014-12-30-利用regular expression判斷URL是否為YouTube URL，且return youtube video ID.html-J2_3i24Y.js" as="script"><link rel="prefetch" href="/assets/2015-01-11-在Linux terminal列輸出己整理的JSON.html-DeoffpYU.js" as="script"><link rel="prefetch" href="/assets/2015-01-16-將package.json入面所有的dependencies更新至最新版本.html-B0dHf3dE.js" as="script"><link rel="prefetch" href="/assets/2015-01-17-redis在socket.io接收多次重覆信息問題.html-B7Ywc7cu.js" as="script"><link rel="prefetch" href="/assets/2015-01-18-TypeError_ deepestAncestor is undefined.html-oeejf0uB.js" as="script"><link rel="prefetch" href="/assets/2015-01-20-從fontello下載font icon_及使用Nokogiri製作一張font icon class 的名單.html-BWq3lSVU.js" as="script"><link rel="prefetch" href="/assets/2015-01-22-debug.py __ IndexError_ list index out of range.html-BTye63RG.js" as="script"><link rel="prefetch" href="/assets/2015-01-26-react-rails.git (at master) is not yet checked out. Run _bundle install_ first.html-CkIq18fP.js" as="script"><link rel="prefetch" href="/assets/2015-02-24-更新git branch所有舊有的電子郵件地址.html-Bn0nwx0b.js" as="script"><link rel="prefetch" href="/assets/2015-03-02-如何令你使用SSH時更安全.html-hQKqYvw1.js" as="script"><link rel="prefetch" href="/assets/2015-03-14-Missing _secret_key_base_ for 'production' environment.html-CxXD6y7o.js" as="script"><link rel="prefetch" href="/assets/2015-04-05-如何令git repo 連接己經存在的heroku app.html-jk8odKy3.js" as="script"><link rel="prefetch" href="/assets/2015-04-15-Socket.io 1.3.5 cdn 同源問題.html-CxI2nQd3.js" as="script"><link rel="prefetch" href="/assets/2015-11-15-Failed to listen on localhost_8000 (reason_ Address already in use).html-CeYS4CAq.js" as="script"><link rel="prefetch" href="/assets/2016-04-16-使用Apache設定Alias時出現403 Foridden.html-BuKWYwkr.js" as="script"><link rel="prefetch" href="/assets/2016-06-24-使用sftp時出現_connection reset by peer connection closed_.html-CkEwQdT2.js" as="script"><link rel="prefetch" href="/assets/2016-06-28-安裝Ubuntu Server至舊Notebook注意事項.html-C5vjY_Vv.js" as="script"><link rel="prefetch" href="/assets/2016-07-09-docker build image 時出現 no space left on device.html-CiTVnMvo.js" as="script"><link rel="prefetch" href="/assets/2016-07-10-執行Laravel PHPUnit 時出現_Maximum function nesting level of '100' reached_ aborting!_.html-CXNJqyLM.js" as="script"><link rel="prefetch" href="/assets/2016-10-01 思考在linux一次性重新命名多個file的問題.html-CIbTt9lC.js" as="script"><link rel="prefetch" href="/assets/2017-01-12-移除及暫停所有Docker container 指令.html-CeZnL6m9.js" as="script"><link rel="prefetch" href="/assets/2017-01-26-用ansible去傳送電子郵件.html-B45p3OVi.js" as="script"><link rel="prefetch" href="/assets/2017-02-06-學習Latex.html-CFXCwlbr.js" as="script"><link rel="prefetch" href="/assets/2017-09-24-差不多半年沒有更新blog了.html-DyJiucwr.js" as="script"><link rel="prefetch" href="/assets/2018-10-14-在Cento 7下使用Cisco AnyConnect Secure Mobility Client.html-iKoYSHA7.js" as="script"><link rel="prefetch" href="/assets/2018-10-15-在Centos7下安裝Chrome.html-BA_xAYV-.js" as="script"><link rel="prefetch" href="/assets/index.html-BSeIRL-n.js" as="script"><link rel="prefetch" href="/assets/index.html-Vcjvchdi.js" as="script"><link rel="prefetch" href="/assets/index.html-DhliRUsN.js" as="script"><link rel="prefetch" href="/assets/index.html-ChNEP13Y.js" as="script"><link rel="prefetch" href="/assets/index.html-ACmjeGy6.js" as="script"><link rel="prefetch" href="/assets/index.html-B9EpIr7A.js" as="script"><link rel="prefetch" href="/assets/index.html-BdS32eKc.js" as="script"><link rel="prefetch" href="/assets/index.html-LC9rb9FK.js" as="script"><link rel="prefetch" href="/assets/index.html-Dr_Gr3Ja.js" as="script"><link rel="prefetch" href="/assets/index.html-D8oDyZCm.js" as="script"><link rel="prefetch" href="/assets/index.html-Cax3J8bs.js" as="script"><link rel="prefetch" href="/assets/index.html-CbMWlfU5.js" as="script"><link rel="prefetch" href="/assets/index.html-DPJDCu_w.js" as="script"><link rel="prefetch" href="/assets/index.html-C9QEXAAC.js" as="script"><link rel="prefetch" href="/assets/index.html-B2v6FqsP.js" as="script"><link rel="prefetch" href="/assets/index.html-8UdkxkCK.js" as="script"><link rel="prefetch" href="/assets/index.html-F8BtxTl1.js" as="script"><link rel="prefetch" href="/assets/index.html-Dcf85ixg.js" as="script"><link rel="prefetch" href="/assets/index.html-0YWoO2ix.js" as="script"><link rel="prefetch" href="/assets/index.html-BdS32eKc.js" as="script"><link rel="prefetch" href="/assets/index.html-laSOaK5n.js" as="script"><link rel="prefetch" href="/assets/index.html-DY2xpcFa.js" as="script"><link rel="prefetch" href="/assets/index.html-laSOaK5n.js" as="script"><link rel="prefetch" href="/assets/index.html-CD12Hwxj.js" as="script"><link rel="prefetch" href="/assets/index.html-CQ5PN1cL.js" as="script"><link rel="prefetch" href="/assets/index.html-4vBnlRcP.js" as="script"><link rel="prefetch" href="/assets/index.html-B4bYFdeW.js" as="script"><link rel="prefetch" href="/assets/index.html-XOgHz_j5.js" as="script"><link rel="prefetch" href="/assets/photoswipe.esm-CKV1Bsxh.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><!--[--><!--[--><span tabindex="-1"></span><a href="#main-content" class="vp-skip-link sr-only">跳至主要內容</a><!--]--><!--[--><div class="theme-container no-sidebar external-link-icon has-toc" vp-container><!--[--><header id="navbar" class="vp-navbar" vp-navbar><div class="vp-navbar-start"><button type="button" class="vp-toggle-sidebar-button" title="Toggle Sidebar"><span class="icon"></span></button><!--[--><a class="route-link vp-brand" href="/" aria-label="带我回家"><!----><!----><span class="vp-site-name">Nick Shek</span></a><!--]--></div><div class="vp-navbar-center"><!--[--><nav class="vp-nav-links"><div class="vp-nav-item hide-in-mobile"><a class="route-link auto-link" href="/" aria-label="文章"><!---->文章<!----></a></div></nav><!--]--></div><div class="vp-navbar-end"><!--[--><!----><div class="vp-nav-item vp-action"><a class="vp-action-link" href="https://github.com/nickshek/site" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" class="icon github-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="github icon" name="github" style="width:1.25rem;height:1.25rem;vertical-align:middle;"><path d="M511.957 21.333C241.024 21.333 21.333 240.981 21.333 512c0 216.832 140.544 400.725 335.574 465.664 24.49 4.395 32.256-10.07 32.256-23.083 0-11.69.256-44.245 0-85.205-136.448 29.61-164.736-64.64-164.736-64.64-22.315-56.704-54.4-71.765-54.4-71.765-44.587-30.464 3.285-29.824 3.285-29.824 49.195 3.413 75.179 50.517 75.179 50.517 43.776 75.008 114.816 53.333 142.762 40.79 4.523-31.66 17.152-53.377 31.19-65.537-108.971-12.458-223.488-54.485-223.488-242.602 0-53.547 19.114-97.323 50.517-131.67-5.035-12.33-21.93-62.293 4.779-129.834 0 0 41.258-13.184 134.912 50.346a469.803 469.803 0 0 1 122.88-16.554c41.642.213 83.626 5.632 122.88 16.554 93.653-63.488 134.784-50.346 134.784-50.346 26.752 67.541 9.898 117.504 4.864 129.834 31.402 34.347 50.474 78.123 50.474 131.67 0 188.586-114.73 230.016-224.042 242.09 17.578 15.232 33.578 44.672 33.578 90.454v135.85c0 13.142 7.936 27.606 32.854 22.87C862.25 912.597 1002.667 728.747 1002.667 512c0-271.019-219.648-490.667-490.71-490.667z"></path></svg></a></div><div class="vp-nav-item hide-in-mobile"><button type="button" class="vp-color-mode-switch" id="color-mode-switch"><svg xmlns="http://www.w3.org/2000/svg" class="icon auto-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="auto icon" name="auto" style="display:block;"><path d="M512 992C246.92 992 32 777.08 32 512S246.92 32 512 32s480 214.92 480 480-214.92 480-480 480zm0-840c-198.78 0-360 161.22-360 360 0 198.84 161.22 360 360 360s360-161.16 360-360c0-198.78-161.22-360-360-360zm0 660V212c165.72 0 300 134.34 300 300 0 165.72-134.28 300-300 300z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="dark icon" name="dark" style="display:none;"><path d="M524.8 938.667h-4.267a439.893 439.893 0 0 1-313.173-134.4 446.293 446.293 0 0 1-11.093-597.334A432.213 432.213 0 0 1 366.933 90.027a42.667 42.667 0 0 1 45.227 9.386 42.667 42.667 0 0 1 10.24 42.667 358.4 358.4 0 0 0 82.773 375.893 361.387 361.387 0 0 0 376.747 82.774 42.667 42.667 0 0 1 54.187 55.04 433.493 433.493 0 0 1-99.84 154.88 438.613 438.613 0 0 1-311.467 128z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="light icon" name="light" style="display:none;"><path d="M952 552h-80a40 40 0 0 1 0-80h80a40 40 0 0 1 0 80zM801.88 280.08a41 41 0 0 1-57.96-57.96l57.96-58a41.04 41.04 0 0 1 58 58l-58 57.96zM512 752a240 240 0 1 1 0-480 240 240 0 0 1 0 480zm0-560a40 40 0 0 1-40-40V72a40 40 0 0 1 80 0v80a40 40 0 0 1-40 40zm-289.88 88.08-58-57.96a41.04 41.04 0 0 1 58-58l57.96 58a41 41 0 0 1-57.96 57.96zM192 512a40 40 0 0 1-40 40H72a40 40 0 0 1 0-80h80a40 40 0 0 1 40 40zm30.12 231.92a41 41 0 0 1 57.96 57.96l-57.96 58a41.04 41.04 0 0 1-58-58l58-57.96zM512 832a40 40 0 0 1 40 40v80a40 40 0 0 1-80 0v-80a40 40 0 0 1 40-40zm289.88-88.08 58 57.96a41.04 41.04 0 0 1-58 58l-57.96-58a41 41 0 0 1 57.96-57.96z"></path></svg></button></div><!----><!--]--><button type="button" class="vp-toggle-navbar-button" aria-label="Toggle Navbar" aria-expanded="false" aria-controls="nav-screen"><span><span class="vp-top"></span><span class="vp-middle"></span><span class="vp-bottom"></span></span></button></div></header><!----><!--]--><!----><div class="toggle-sidebar-wrapper"><span class="arrow start"></span></div><!----><!--[--><main id="main-content" class="vp-page not-found"><div class="not-found-hint"><p class="error-code">404</p><h1 class="error-title">页面不存在</h1><p class="error-hint">这里什么也没有</p></div><div class="actions"><button type="button" class="action-button">返回上一页</button><button type="button" class="action-button">带我回家</button></div></main><!--]--><!----></div><!--]--><!--]--><!--[--><!----><!--[--><!--]--><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-B0w5hgOU.js" defer></script>
+  </body>
 </html>
